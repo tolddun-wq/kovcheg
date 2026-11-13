@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Ковчег — животные</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="img/favicon.svg">
+<script src="js/kovcheg.js"></script>
+</head>
+<body>
+<template id="x-dc">
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&amp;family=Oranienbaum&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F7F8F3}
+a{color:inherit}
+.k{font-family:'Jost',system-ui,sans-serif;color:#0E1F18;background:#F7F8F3;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow:hidden}
+.k *{box-sizing:border-box}
+.wrap{max-width:1360px;margin:0 auto;padding:0 40px;position:relative}
+.d{font-family:'Oranienbaum',serif;font-weight:400;line-height:.95;margin:0}
+.lnk{font-weight:600;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;display:inline-flex;align-items:center;min-height:44px}
+.lnk:hover{color:#C4502E}
+.tk-v{-webkit-mask:radial-gradient(circle 11px at 50% 0,#0000 97%,#000) top/100% 51% no-repeat,radial-gradient(circle 11px at 50% 100%,#0000 97%,#000) bottom/100% 51% no-repeat;mask:radial-gradient(circle 11px at 50% 0,#0000 97%,#000) top/100% 51% no-repeat,radial-gradient(circle 11px at 50% 100%,#0000 97%,#000) bottom/100% 51% no-repeat}
+.gr{position:relative;overflow:hidden;background:#12392B}
+.gr img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.06) brightness(.98) sepia(.14)}
+.gr::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(242,179,61,.12) 0%,rgba(18,57,43,.22) 100%);mix-blend-mode:multiply}
+.tag{display:inline-flex;align-items:center;height:24px;padding:0 8px;font-size:13px;font-weight:600;border-radius:3px;color:#0E1F18}
+.LC{background:#BFD8B4}.NT{background:#E3DB8C}.VU{background:#F2C46A}.EN{background:#EE8452}.CR{background:#C8352A;color:#fff}
+.lbl2{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:600;color:#C4502E;margin-top:20px}
+.lbl2::before{content:'';width:44px;height:2px;background:currentColor;flex:none}
+
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:92px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#12392B}
+.logo svg{width:46px;height:46px}
+.logo b{font-family:'Oranienbaum',serif;font-weight:400;font-size:34px;line-height:1}
+.logo small{display:block;font-size:13px;color:#4F6157;margin-top:2px}
+.nav{display:flex;gap:28px;flex-wrap:wrap}
+.nav a{text-decoration:none;font-size:16px;font-weight:500;padding:10px 0}
+.nav a:hover{color:#C4502E}
+.nav a.on{box-shadow:inset 0 -2px 0 #C4502E}
+
+.top{padding:40px 0 64px;background:
+  radial-gradient(300px 180px at 12% 30%,rgba(18,57,43,.06),transparent 70%),
+  radial-gradient(260px 160px at 72% 14%,rgba(242,179,61,.16),transparent 70%),
+  radial-gradient(420px 260px at 92% 86%,rgba(18,57,43,.08),transparent 70%),
+  linear-gradient(180deg,#F7F8F3 0%,#E3EBE1 100%)}
+.top h1{font-size:clamp(80px,10vw,160px);color:#12392B}
+.top-row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:56px;align-items:end}
+.top p{margin:0;font-size:19px;color:#4F6157;max-width:520px}
+.zchips{display:flex;gap:10px;flex-wrap:wrap;margin-top:48px}
+.zchip{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border-radius:999px;background:#fff;text-decoration:none;font-weight:600;font-size:16px;box-shadow:0 10px 20px -14px rgba(14,31,24,.5);transition:transform .2s}
+.zchip:hover{transform:translateY(-2px)}
+.zchip i{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-style:normal;font-family:'Oranienbaum',serif;font-size:16px}
+
+.zone{padding:100px 0}
+.zone:nth-of-type(even){background:#E3EBE1}
+.z-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:start}
+.zone.rev .z-ph{order:2}
+.z-ph{height:620px;box-shadow:0 40px 60px -40px rgba(14,31,24,.6)}
+.z-ph img{object-position:50% 30%}
+.zn{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;font-family:'Oranienbaum',serif;font-size:24px;box-shadow:0 10px 18px -8px rgba(14,31,24,.5)}
+.z-txt h2{font-size:clamp(52px,5.4vw,84px);color:#12392B;margin:20px 0 6px}
+.motto{font-size:21px;font-weight:600;margin:0 0 20px}
+.z-txt>p{margin:0 0 24px;color:#3D4D44}
+.zfacts{display:flex;gap:32px;flex-wrap:wrap;margin-bottom:24px}
+.zfacts b{display:block;font-family:'Oranienbaum',serif;font-weight:400;font-size:40px;line-height:1;color:#12392B}
+.zfacts span{font-size:14px;color:#4F6157}
+.facts{list-style:none;margin:0 0 22px;padding:0;display:flex;flex-direction:column;gap:12px}
+.facts li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:8px;font-size:16px}
+.facts li span{font-family:'Oranienbaum',serif;font-size:26px;line-height:1;color:#C4502E}
+.who{font-size:15px;color:#3D4D44;margin:0 0 24px}
+.boxes{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;filter:drop-shadow(0 14px 16px rgba(14,31,24,.18))}
+.box{background:#fff;padding:22px 20px}
+.box.hot{background:#F2B33D}
+.box b{display:block;font-size:14px;margin-bottom:6px}
+.box p{margin:0;font-size:15px}
+
+.res{padding:110px 0;background:#12392B;color:#F7F8F3}
+.res h2{font-size:clamp(52px,5.4vw,88px)}
+.legend{display:flex;gap:10px 20px;flex-wrap:wrap;font-size:15px;align-items:center;margin-top:22px;color:#CFDDD3}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:36px 0}
+.chip{all:unset;box-sizing:border-box;cursor:pointer;min-height:44px;padding:0 18px;display:inline-flex;align-items:center;font-size:16px;font-weight:600;border-radius:999px;box-shadow:inset 0 0 0 1.5px rgba(247,248,243,.4);transition:background .2s}
+.chip:hover{background:rgba(247,248,243,.1)}
+.chip:focus-visible{outline:3px solid #F2B33D;outline-offset:2px}
+.chip.on{background:#F2B33D;color:#0E1F18;box-shadow:0 10px 18px -8px rgba(0,0,0,.6)}
+.sgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 20px}
+.card{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:#F7F8F3}
+.card .gr{height:330px;box-shadow:0 30px 44px -26px rgba(0,0,0,.8);transition:transform .3s}
+.card:hover .gr{transform:translateY(-4px)}
+.card .tag{position:absolute;top:12px;left:12px;z-index:2}
+.card .z{font-size:14px;font-weight:600;margin-top:6px}
+.card h3{font-size:36px}
+.card p{margin:0;font-size:15px;color:#CFDDD3}
+
+.stories{padding:110px 0}
+.stories h2{font-size:clamp(52px,5.4vw,88px);color:#12392B}
+.st-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:48px}
+.st{border-top:2px solid #12392B;padding-top:22px}
+.st h3{font-size:36px;color:#12392B;margin:10px 0 12px}
+.st p{margin:0;color:#3D4D44}
+.st .y{font-size:15px;font-weight:600;color:#C4502E}
+
+.foot{background:#0B2A1F;color:#B7CBBE;padding:56px 0 36px;font-size:15px}
+.foot .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+.foot .logo{color:#F7F8F3}.foot .logo small{color:#8FA898}
+@media (max-width:1000px){
+  .wrap{padding:0 16px}
+  .top-row,.z-grid,.st-grid,.boxes{grid-template-columns:minmax(0,1fr)}
+  .zone.rev .z-ph{order:0}
+  .z-ph{height:340px}
+  .sgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 12px}
+  .card .gr{height:220px}
+  .zone,.res,.stories{padding:72px 0}
+  .nav{order:3;width:100%;flex-wrap:nowrap;overflow-x:auto;gap:20px;scrollbar-width:none}.nav a{white-space:nowrap}
+}
+
+/* ——— shared kit ——— */
+.k-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.k-lnk{all:unset;box-sizing:border-box;cursor:pointer;font-weight:600;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;display:inline-flex;align-items:center;min-height:44px}
+.k-lnk:hover{color:#C4502E}
+.k-lnk:focus-visible,.k-cart:focus-visible,.k-buy:focus-visible,.k-x:focus-visible,.k-subbtn:focus-visible{outline:3px solid #F2B33D;outline-offset:3px}
+.k-hr{display:flex;align-items:center;gap:18px}
+.k-cart{position:relative;display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:#12392B;color:#F7F8F3;text-decoration:none;box-shadow:0 10px 18px -10px rgba(11,42,31,.7);transition:transform .2s}
+.k-cart:hover{transform:translateY(-2px);color:#F7F8F3}
+.k-cart svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.k-cart b{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:#F2B33D;color:#0E1F18;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.k-buy{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:stretch;min-height:58px;color:#0E1F18;background:#F2B33D;font-family:'Jost',sans-serif;font-weight:600;font-size:17px;border-radius:8px;transition:transform .2s;
+  -webkit-mask:radial-gradient(circle 11px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat;
+  mask:radial-gradient(circle 11px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat}
+.k-buy span{display:flex;align-items:center;padding:0 22px 0 28px}
+.k-buy i{font-style:normal;display:flex;align-items:center;padding:0 26px 0 18px;border-left:2px dashed rgba(14,31,24,.35)}
+.k-buy:hover{transform:translateY(-2px);color:#0E1F18}
+.k-shadow{display:inline-block;filter:drop-shadow(0 12px 14px rgba(150,100,20,.35))}
+.k-foot{background:#0B2A1F;color:#B7CBBE;padding:80px 0 36px;font-size:16px}
+.k-foot .logo{color:#F7F8F3}.k-foot .logo small{color:#8FA898}
+.k-foot-top{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:40px}
+.k-faddr{margin:22px 0 0;line-height:1.6}
+.k-faddr .k-lnk{min-height:0;color:#F7F8F3}
+.k-foot h4{font-size:15px;font-weight:600;color:#F7F8F3;margin:0 0 14px}
+.k-foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.k-foot ul a,.k-foot-bot a{text-decoration:none}.k-foot ul a:hover,.k-foot-bot a:hover{color:#F2B33D}
+.k-sub{display:flex;gap:8px;margin-top:24px;max-width:460px}
+.k-sub input{flex:1;min-width:0;height:50px;padding:0 16px;border-radius:6px;border:1.5px solid rgba(247,248,243,.3);background:rgba(247,248,243,.06);color:#F7F8F3;font:inherit}
+.k-sub input::placeholder{color:#8FA898}
+.k-subbtn{all:unset;box-sizing:border-box;cursor:pointer;height:50px;padding:0 20px;border-radius:6px;background:#F2B33D;color:#0E1F18;font-weight:600}
+.k-foot-bot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:56px;padding-top:22px;border-top:1px solid rgba(247,248,243,.14);font-size:13px;color:#8FA898}
+.k-credits{margin:14px 0 0;font-size:12px;line-height:1.6;color:#7E9587}
+.k-veil{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(6,20,14,.62);backdrop-filter:blur(4px)}
+.k-modal{position:relative;width:min(580px,100%);background:#12392B;color:#F7F8F3;border-radius:8px;border:6px solid #0F3123;padding:40px 38px 32px;box-shadow:0 2px 0 #0B2A1F,0 50px 90px -24px rgba(0,0,0,.75)}
+.k-bolt{position:absolute;top:10px;width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#EDE8DA,#8E8A7E)}
+.k-mtag{display:inline-block;padding:4px 12px;border-radius:999px;background:#F2B33D;color:#0E1F18;font-size:13px;font-weight:600}
+.k-mh{font-family:'Oranienbaum',serif;font-weight:400;font-size:44px;line-height:1;margin:16px 0 14px}
+.k-mp{margin:0;color:#CFDDD3;font-size:17px;line-height:1.55}
+.k-mrow{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:26px}
+.k-back{color:#F7F8F3}
+.k-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:55;display:flex;align-items:center;gap:16px;padding:12px 12px 12px 20px;border-radius:8px;background:#12392B;color:#F7F8F3;box-shadow:0 24px 40px -14px rgba(0,0,0,.6);font-size:15px;max-width:calc(100% - 32px)}
+.k-toastgo{padding:10px 16px;border-radius:6px;background:#F2B33D;color:#0E1F18;font-weight:600;text-decoration:none;white-space:nowrap}
+.k-x{all:unset;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#B7CBBE}
+.k-field{display:flex;flex-direction:column;gap:6px;font-size:15px;font-weight:600}
+.k-field input,.k-field select,.k-field textarea{font:inherit;font-weight:400;font-size:17px;padding:13px 15px;border:1.5px solid #CBD5CD;border-radius:6px;background:#fff;color:#0E1F18}
+.k-field textarea{min-height:120px;resize:vertical}
+.k-field input:focus,.k-field select:focus,.k-field textarea:focus{outline:3px solid #F2B33D;outline-offset:1px;border-color:#12392B}
+.k-check{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4}
+.k-check input{width:20px;height:20px;margin:2px 0 0;accent-color:#12392B}
+@media (max-width:1000px){
+  .k-foot-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .k-foot-top>div:first-child{grid-column:1 / -1}
+  .k-hr .k-lnk{display:none}
+  .k-modal{padding:32px 20px 24px}
+  .k-mh{font-size:34px}
+  .k-toast{left:16px;right:16px;transform:none;flex-wrap:wrap}
+}
+
+</style>
+</helmet>
+
+<div class="k">
+  <header class="hdr"><div class="wrap">
+    <a class="logo" href="index.html" aria-label="Ковчег, на главную">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M11.5 19 L20 11.5 L28.5 19" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"></path><rect x="14.5" y="19" width="11" height="7" fill="none" stroke="currentColor" stroke-width="2.4"></rect><path d="M4 26 H36 L31 33 H9 Z" fill="currentColor"></path><path d="M5 37.5 q3.75 -2.5 7.5 0 t7.5 0 t7.5 0 t7.5 0" fill="none" stroke="#F2B33D" stroke-width="2" stroke-linecap="round"></path></svg>
+      <span><b>Ковчег</b><small>зоопарк, Минск</small></span>
+    </a>
+    <nav class="nav" aria-label="Главное меню">
+      <a class="on" aria-current="page" href="animals.html">Животные</a>
+      <a href="index.html#map">Карта</a>
+      <a href="tickets.html">Билеты</a>
+      <a href="experiences.html">Впечатления</a>
+      <a href="visit.html">Как добраться</a>
+      <a href="about.html">О зоопарке</a>
+    </nav>
+    <div class="k-hr">
+      <button class="k-lnk" type="button" onClick="{{callDemo}}">+375 17 000-00-00</button>
+      <a class="k-cart" href="cart.html" aria-label="Корзина"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2z"></path><path d="M9 8V6.5a3 3 0 0 1 6 0V8"></path></svg><sc-if value="{{hasCart}}"><b>{{cartCount}}</b></sc-if></a>
+    </div>
+  </div></header>
+
+  <section class="top">
+    <div class="wrap">
+      <div class="top-row">
+        <div>
+          <h1 class="d">Животные</h1>
+          <div class="lbl2">310 видов в семи зонах</div>
+        </div>
+        <p>Маршрут идёт по кругу, 6,5 километра. У каждой зоны свой климат, растения и звуки. Выберите, с чего начать.</p>
+      </div>
+      <div class="zchips">
+        <sc-for list="{{zones}}" as="z">
+          <a class="zchip" href="#z{{z.n}}"><i style="background:{{z.c}}">{{z.n}}</i>{{z.name}}</a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <sc-for list="{{zones}}" as="z">
+    <section class="zone {{z.rev}}" id="z{{z.n}}">
+      <div class="wrap">
+        <div class="z-grid">
+          <div class="gr z-ph"><img src="{{z.img}}" alt="{{z.alt}}"></div>
+          <div class="z-txt">
+            <span class="zn" style="background:{{z.c}}">{{z.n}}</span>
+            <h2 class="d">{{z.name}}</h2>
+            <p class="motto">{{z.motto}}</p>
+            <p>{{z.desc}}</p>
+            <div class="zfacts"><span><b>{{z.ha}}</b>площадь</span><span><b>{{z.sp}}</b>видов</span><span><b>{{z.t}}</b>на осмотр</span></div>
+            <ul class="facts">
+              <sc-for list="{{z.facts}}" as="f">
+                <li><span>{{f.i}}</span>{{f.t}}</li>
+              </sc-for>
+            </ul>
+            <p class="who"><b style="color:#0E1F18">Кто живёт:</b> {{z.who}}</p>
+            <div class="boxes">
+              <div class="box hot tk-v"><b>Не пропустите</b><p>{{z.miss}}</p></div>
+              <div class="box tk-v"><b>Лучшее время</b><p>{{z.best}}</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+
+  <section class="res" id="stars">
+    <div class="wrap">
+      <h2 class="d">Кого навестить</h2>
+      <div class="legend" aria-label="Статус вида в Красной книге МСОП">
+        <span style="font-weight:600;color:#F7F8F3">Статус в Красной книге:</span>
+        <span><span class="tag LC">LC</span> вне угрозы</span>
+        <span><span class="tag NT">NT</span> близок к угрожаемому</span>
+        <span><span class="tag VU">VU</span> уязвимый вид</span>
+        <span><span class="tag EN">EN</span> под угрозой исчезновения</span>
+        <span><span class="tag CR">CR</span> на грани исчезновения</span>
+      </div>
+      <div class="chips" role="group" aria-label="Фильтр по зоне">
+        <sc-for list="{{chips}}" as="c">
+          <button class="chip {{c.cls}}" onClick="{{c.pick}}" aria-pressed="{{c.pressed}}">{{c.label}}</button>
+        </sc-for>
+      </div>
+      <div class="sgrid">
+        <sc-for list="{{stars}}" as="s">
+          <a class="card" href="{{s.href}}" onClick="{{s.go}}">
+            <div class="gr"><img src="{{s.img}}" alt="{{s.alt}}"><span class="tag {{s.st}}">{{s.st}}</span></div>
+            <span class="z" style="color:{{s.c}}">{{s.zone}} · {{s.sp}}, {{s.age}}</span>
+            <h3 class="d">{{s.name}}</h3>
+            <p>{{s.fact}}</p>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section class="stories">
+    <div class="wrap">
+      <h2 class="d">Три истории</h2>
+      <div class="st-grid">
+        <div class="st"><span class="y">Пуща · 2017</span><h3 class="d">Кряж и возвращение зубра</h3><p>В 2017 году у нас родился первый зубрёнок. Через три года Кряж стал вожаком стада. Раз в год несколько животных отправляются в национальный парк, чтобы пополнить природную популяцию.</p></div>
+        <div class="st"><span class="y">Азия · больше 40 жестов</span><h3 class="d">Ява и язык жестов</h3><p>Орангутан Ява выучил больше 40 жестов и просит ими еду и игрушки. Он первым начал сам открывать контейнеры с угощением — теперь для него придумывают головоломки сложнее.</p></div>
+        <div class="st"><span class="y">Азия · 2025</span><h3 class="d">Алтай и его семья</h3><p>Тигр Алтай приехал к нам одиноким, через год в вольере появилась тигрица Амура. В 2025 году у пары родились двойняшки, имена выбирали посетители.</p><a class="lnk" href="altai.html" style="margin-top:8px">Страница Алтая</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="k-foot">
+    <div class="wrap">
+      <div class="k-foot-top">
+        <div>
+          <a class="logo k-flogo" href="index.html" aria-label="Ковчег, на главную"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M11.5 19 L20 11.5 L28.5 19" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"></path><rect x="14.5" y="19" width="11" height="7" fill="none" stroke="currentColor" stroke-width="2.4"></rect><path d="M4 26 H36 L31 33 H9 Z" fill="currentColor"></path><path d="M5 37.5 q3.75 -2.5 7.5 0 t7.5 0 t7.5 0 t7.5 0" fill="none" stroke="#F2B33D" stroke-width="2" stroke-linecap="round"></path></svg><span><b>Ковчег</b><small>зоопарк, Минск, с 2009 года</small></span></a>
+          <p class="k-faddr">Минск, ул. Зелёная Роща, 1<br><button class="k-lnk" type="button" onClick="{{callDemo}}">+375 17 000-00-00</button> · <button class="k-lnk" type="button" onClick="{{mailDemo}}">info@kovcheg-zoo.by</button></p>
+          <form class="k-sub">
+            <label class="k-vh" for="k-sub-email">Email для новостей</label>
+            <input id="k-sub-email" type="email" placeholder="Email · новости раз в месяц">
+            <button class="k-subbtn" type="button" onClick="{{formDemo}}">Подписаться</button>
+          </form>
+        </div>
+        <div><h4>Посетителям</h4><ul><li><a href="tickets.html">Билеты</a></li><li><a href="visit.html">Как добраться</a></li><li><a href="faq.html">Вопросы и правила</a></li><li><a href="contacts.html">Контакты</a></li><li><a href="cart.html">Корзина</a></li></ul></div>
+        <div><h4>Зоопарк</h4><ul><li><a href="about.html">О зоопарке</a></li><li><a href="about.html#science">Природа и наука</a></li><li><a href="experiences.html">Впечатления</a></li><li><a href="news.html">Новости</a></li><li><a href="support.html">Поддержать</a></li></ul></div>
+        <div><h4>Часы</h4><ul><li>Лето: 9:00–20:00</li><li>Зима: 10:00–17:00</li><li>Без выходных</li></ul></div>
+      </div>
+      <div class="k-foot-bot">
+        <span>© 2009–2026 Зоопарк «Ковчег» · демо-сайт для портфолио, зоопарк вымышленный</span>
+        <span><a href="legal.html#privacy">Политика конфиденциальности</a> · <a href="legal.html#terms">Публичная оферта</a></span>
+      </div>
+      <p class="k-credits">Фото: Wikimedia Commons, иллюстративные (CC BY, CC BY-SA, CC0, PD); авторы указаны на страницах. Дизайн и вёрстка — Анатолий, Telegram @isthisthedaggr.</p>
+    </div>
+  </footer>
+  <sc-if value="{{toastOn}}">
+    <div class="k-toast" role="status"><span>Добавлено в корзину: <b>{{toast}}</b></span><a class="k-toastgo" href="cart.html">В корзину →</a><button class="k-x" type="button" aria-label="Закрыть" onClick="{{closeToast}}">×</button></div>
+  </sc-if>
+  <sc-if value="{{demo}}">
+    <div class="k-veil" role="dialog" aria-modal="true" aria-labelledby="k-demo-title">
+      <div class="k-modal">
+        <i class="k-bolt" style="left:10px"></i><i class="k-bolt" style="right:10px"></i>
+        <span class="k-mtag">Пробный сайт</span>
+        <h2 id="k-demo-title" class="k-mh">{{demoTitle}}</h2>
+        <p class="k-mp">{{demoText}}</p>
+        <div class="k-mrow">
+          <span class="k-shadow"><a class="k-buy" href="https://t.me/isthisthedaggr" target="_blank" rel="noopener"><span>Написать в Telegram</span><i>@isthisthedaggr</i></a></span>
+          <sc-if value="{{isAnimal}}"><a class="k-lnk k-back" href="altai.html">Страница Алтая</a></sc-if>
+          <button class="k-lnk k-back" type="button" onClick="{{closeDemo}}">Вернуться на сайт</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</template>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":9200}}'>
+class Component extends DCLogic {
+  kitInit() {
+    let n = 0;
+    try { const c = JSON.parse(localStorage.getItem('kovcheg-cart') || '[]'); n = c.reduce((s, x) => s + (x.qty || 0), 0); } catch (e) {}
+    this.setState({ cartCount: n });
+    setTimeout(() => { try { const h = location.hash.slice(1); const el = h && document.getElementById(h); if (el) el.scrollIntoView(); } catch (e) {} }, 60);
+  }
+  addToCart(item) {
+    let c = null;
+    try { c = JSON.parse(localStorage.getItem('kovcheg-cart') || '[]'); } catch (e) { c = null; }
+    if (c) {
+      const f = c.find(x => x.id === item.id);
+      if (f) f.qty += item.qty || 1; else c.push({ ...item, qty: item.qty || 1 });
+      try { localStorage.setItem('kovcheg-cart', JSON.stringify(c)); } catch (e) {}
+      this.setState({ cartCount: c.reduce((s, x) => s + x.qty, 0), toast: item.label });
+    } else {
+      this.setState({ cartCount: ((this.state && this.state.cartCount) || 0) + (item.qty || 1), toast: item.label });
+    }
+  }
+  kit() {
+    const s = this.state || {};
+    return {
+      demo: !!s.demo, isAnimal: s.demoKind === 'animal',
+      demoTitle: s.demoKind === 'animal' ? 'Страница есть только у Алтая' : (s.demoWhat || 'Эта функция') + ' — только в настоящем сайте',
+      demoText: s.demoKind === 'animal' ? 'В демо-версии сделана одна страница жителя — амурский тигр Алтай. Страницы остальных животных появятся в настоящем сайте. Хотите такой сайт — напишите мне в Telegram.' : '«Ковчег» — демо-проект для портфолио, зоопарк вымышленный, поэтому оплата, звонки и отправка форм здесь не работают. Хотите такой же сайт для своего бизнеса — напишите мне в Telegram, обсудим.',
+      cartCount: s.cartCount || 0, hasCart: (s.cartCount || 0) > 0,
+      toastOn: !!s.toast, toast: s.toast || '',
+      closeToast: () => this.setState({ toast: '' }),
+      callDemo: () => this.setState({ demo: true, demoKind: '', demoWhat: 'Звонок' }),
+      mailDemo: () => this.setState({ demo: true, demoKind: '', demoWhat: 'Письмо' }),
+      payDemo: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ demo: true, demoKind: '', demoWhat: 'Оплата' }); },
+      formDemo: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ demo: true, demoKind: '', demoWhat: 'Отправка формы' }); },
+      animalDemo: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ demo: true, demoKind: 'animal' }); },
+      closeDemo: () => this.setState({ demo: false })
+    };
+  }
+  componentDidMount() { this.kitInit(); }
+  constructor(props) { super(props); this.state = { f: 'all' }; }
+  renderVals() {
+    const C = { pu: '#7FAF78', sa: '#E0A33A', az: '#D8724F', ar: '#9CCAE0', tr: '#5FB08F', au: '#E58E54', fe: '#D9C681' };
+    const Z = [
+      { k: 'pu', name: 'Белорусская пуща', motto: 'Так выглядел лес до нас.', ha: '9 га', sp: '52', t: '1,5 ч', img: 'img/bear.jpg', alt: 'Бурый медведь в лесу', desc: 'Самая большая зона — 9 гектаров смешанного леса с вековыми дубами, болотными лугами и лесным озером. Тропа идёт по настилу над болотом, а зубров видно с видовой башни.', facts: ['Зубр — самое тяжёлое сухопутное животное Европы: самец весит почти тонну.', 'Рысь слышит шорох за 60 метров благодаря кисточкам на ушах.', 'Выдра находит добычу усами в мутной воде.'], who: 'зубр, бурый медведь, волк, рысь, лось, красный олень, кабан, выдра, бобёр, филин, серый журавль, чёрный аист', miss: 'Настил над болотом (420 м) и башня «Зубриный край», 18 метров.', best: 'Утро и поздний вечер — животные активнее.' },
+      { k: 'sa', name: 'Саванна', motto: 'Горизонт без решёток.', ha: '8 га', sp: '48', t: '1,5 ч', img: 'img/zebra.jpg', alt: 'Зебры на водопое', desc: 'Жирафы, зебры, носороги и антилопы пасутся одним стадом. Хищников отделяют рвы, поэтому кажется, что львица стоит за спиной. Подвесной мост идёт на высоте крон.', facts: ['Язык жирафа длиной около 45 см достаёт до ушей.', 'Рёв льва слышен за 8 километров.', 'Двух одинаковых зебр не бывает — рисунок как отпечаток пальца.'], who: 'жираф, зебра, белый носорог, лев, гепард, гиена, сурикат, антилопа гну, страус, гиппопотам, павиан гамадрил', miss: 'Мост «На уровне глаз жирафа»: кормление из рук в 12:00 и 16:00.', best: 'Летнее утро, пока не жарко. Зимой — через стекло павильонов.' },
+      { k: 'az', name: 'Азия', motto: 'От тайги до джунглей.', ha: '7 га', sp: '46', t: '1 ч', img: 'img/elephant.jpg', alt: 'Азиатский слон купается в реке', desc: 'Бамбуковые рощи, скалы и пагода. Амурские тигры, слоны и красные панды. Для слонов выкопан большой пруд — за купанием видно через подводное стекло.', facts: ['Амурский тигр — самая крупная дикая кошка планеты.', 'Красная панда спит на деревьях до 11 часов в сутки.', 'Слоны узнают себя в зеркале.'], who: 'амурский тигр, азиатский слон, красная панда, дальневосточный леопард, бактриан, баран Марко Поло, павлин, гиббон, борнейский орангутан', miss: 'Подводное окно «Слон плавает» и комната красных панд.', best: 'Тёплый день: тигры лежат у стекла, слоны купаются в 12:30.' },
+      { k: 'ar', name: 'Арктика', motto: 'Край, где всегда зима.', ha: '3 га', sp: '22', t: '45 мин', img: 'img/polar2.jpg', alt: 'Белый медведь на льду', desc: 'Бассейны и ледяные гроты. Освещение меняется по сезонам, а подводный тоннель длиной 24 метра проходит прямо под плавающими медведями.', facts: ['Шерсть белого медведя прозрачная, кожа под ней чёрная.', 'Пингвин генту плавает со скоростью до 35 км/ч.', 'Песец белый зимой и коричневый летом.'], who: 'белый медведь, пингвин генту, северный морской лев, нерпа, песец, снежная сова, овцебык', miss: 'Подводный тоннель и кормление пингвинов в 14:00.', best: 'Любое время, особенно жаркий день.' },
+      { k: 'tr', name: 'Тропики', motto: 'Лето, которое не заканчивается.', ha: '2 га', sp: '78', t: '1 ч', img: 'img/toucan.jpg', alt: 'Тукан токо', desc: 'Крытый павильон: всегда +26 °C и влажность 80%. Тропа идёт через три яруса. Птицы летают свободно, а в «Ночном мире» днём ночь.', facts: ['Ленивец переваривает один лист около месяца.', 'Лягушки-древолазы в неволе не ядовиты.', 'Через клюв тукан сбрасывает лишнее тепло.'], who: 'двупалый ленивец, кольцехвостый лемур, тукан, ара, игуана, лягушки-древолазы, удав, варан, бабочки — более 60 видов', miss: 'Зал бабочек — они садятся на плечи.', best: 'Зима и дождливые дни.' },
+      { k: 'au', name: 'Австралия', motto: 'Здесь всё наоборот — и это хорошо.', ha: '4 га', sp: '28', t: '40 мин', img: 'img/kangaroo.jpg', alt: 'Рыжие кенгуру', desc: 'Рыжая земля, трава и эвкалипты. В вольер с кенгуру можно зайти без ограждения: не кормить, не трогать, держать дистанцию.', facts: ['Кенгуру не умеет ходить назад, зато прыгает на 8 метров.', 'Коала спит около 20 часов в сутки.', 'У вомбата помёт в форме кубиков.'], who: 'рыжий кенгуру, коала, вомбат, эму, казуар, валлаби, тасманийский дьявол, какаду', miss: 'Вольер «Прыгай с нами» и коала-бар.', best: 'Вечером — кенгуру, в 11:00 — коала на завтраке.' },
+      { k: 'fe', name: 'Ферма', motto: 'Здесь можно трогать.', ha: '2 га', sp: '36', t: '40 мин', img: 'img/goat.jpg', alt: 'Козлёнок', desc: 'Деревенский двор для самых младших. Животных можно гладить, чесать и кормить кормом из автомата — 2 Br за стаканчик.', facts: ['Альпаки общаются тихим гудением.', 'Козы узнают голос смотрителя и отзываются на имя.', 'Зубы кроликов растут всю жизнь.'], who: 'козы, альпаки, кролики, мини-пони, ослы, овцы, редкие куры, утки, гуси, вьетнамские свиньи', miss: '«Козий мост» и пони — круг за 5 Br.', best: 'Утро и после 14:00; в обед животные отдыхают.' }
+    ];
+    const zones = Z.map((z, i) => ({ ...z, n: String(i + 1), c: C[z.k], rev: i % 2 ? 'rev' : '', facts: z.facts.map((t, j) => ({ i: j + 1, t })) }));
+    const S = [
+      ['pu', 'Кряж', 'зубр', '9 лет', 'NT', 'Весит 870 кг. Родился у нас в 2017 году.', 'img/bison.jpg'],
+      ['pu', 'Мира', 'рысь', '6 лет', 'LC', 'Охотится бесшумно: подушечки лап в густой шерсти.', 'img/lynx.jpg'],
+      ['pu', 'Боря', 'бурый медведь', '14 лет', 'LC', 'Попал к нам из закрытого цирка. Любит арбузы.', 'img/bear.jpg'],
+      ['sa', 'Саид', 'лев', '8 лет', 'VU', 'На рассвете устраивает громкий концерт.', 'img/lion.jpg'],
+      ['sa', 'Лиза', 'жираф', '11 лет', 'VU', 'Рост 4,8 м, сердце весит около 11 кг.', 'img/giraffe.jpg'],
+      ['sa', 'Гром', 'белый носорог', '17 лет', 'NT', '2,2 тонны, но подходит на цыпочках.', 'img/rhino.jpg'],
+      ['sa', 'Клан из 12', 'сурикаты', '1–5 лет', 'LC', 'Один всегда стоит на посту и следит за небом.', 'img/meerkat.jpg'],
+      ['az', 'Алтай', 'амурский тигр', '7 лет', 'EN', 'Приехал из Новосибирска. Каждая полоска уникальна.', 'img/tiger2.jpg'],
+      ['az', 'Дара', 'азиатский слон', '24 года', 'EN', 'Знает 30 команд и рисует хоботом.', 'img/elephant.jpg'],
+      ['az', 'Рубин и Бусинка', 'красные панды', '4 и 3 года', 'EN', 'Заворачиваются в хвост, как в одеяло.', 'img/redpanda.jpg'],
+      ['az', 'Ява', 'орангутан', '19 лет', 'CR', 'Каждый вечер строит новое гнездо. Открывает замки.', 'img/orangutan.jpg'],
+      ['ar', 'Нордик', 'белый медведь', '10 лет', 'VU', 'Проплывает без остановки 30 км.', 'img/polar.jpg'],
+      ['ar', 'Колония из 31', 'пингвины генту', '2–15 лет', 'LC', 'Дарят партнёру камушек как знак внимания.', 'img/penguin.jpg'],
+      ['au', 'Лео', 'коала', '5 лет', 'VU', 'Не пьёт из луж: влагу берёт из листьев.', 'img/koala.jpg']
+    ];
+    const ZN = { pu: 'Пуща', sa: 'Саванна', az: 'Азия', ar: 'Арктика', au: 'Австралия' };
+    const f = this.state.f;
+    const stars = S.filter(s => f === 'all' || s[0] === f).map(s => ({ name: s[1], sp: s[2], age: s[3], st: s[4], fact: s[5], img: s[6], alt: s[2], zone: ZN[s[0]], c: C[s[0]], href: s[1] === 'Алтай' ? 'altai.html' : '#stars', go: s[1] === 'Алтай' ? () => {} : (e) => this.kit().animalDemo(e) }));
+    const chips = [['all', 'Все 14'], ['pu', 'Пуща'], ['sa', 'Саванна'], ['az', 'Азия'], ['ar', 'Арктика'], ['au', 'Австралия']].map(c => ({ label: c[1], cls: c[0] === f ? 'on' : '', pressed: c[0] === f ? 'true' : 'false', pick: () => this.setState({ f: c[0] }) }));
+    return { ...this.kit(),  zones, stars, chips };
+  }
+}
+</script>
+</body>
+</html>

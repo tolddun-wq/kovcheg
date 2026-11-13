@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Ковчег — главная</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="img/favicon.svg">
+<script src="js/kovcheg.js"></script>
+</head>
+<body>
+<template id="x-dc">
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&amp;family=Oranienbaum&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F7F8F3}
+a{color:inherit}
+.k{font-family:'Jost',system-ui,sans-serif;color:#0E1F18;background:#F7F8F3;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow:hidden}
+.k *{box-sizing:border-box}
+.wrap{max-width:1360px;margin:0 auto;padding:0 40px;position:relative}
+.d{font-family:'Oranienbaum',serif;font-weight:400;line-height:.95;margin:0;letter-spacing:-.005em}
+
+/* one signature: the ticket */
+.tk{position:relative;border-radius:8px;
+  -webkit-mask:radial-gradient(circle 11px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat;
+  mask:radial-gradient(circle 11px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat}
+.tk-v{-webkit-mask:radial-gradient(circle 12px at 50% 0,#0000 97%,#000) top/100% 51% no-repeat,radial-gradient(circle 12px at 50% 100%,#0000 97%,#000) bottom/100% 51% no-repeat;
+  mask:radial-gradient(circle 12px at 50% 0,#0000 97%,#000) top/100% 51% no-repeat,radial-gradient(circle 12px at 50% 100%,#0000 97%,#000) bottom/100% 51% no-repeat}
+.perf{border:0;border-top:2px dashed currentColor;opacity:.3;margin:0}
+.buy{display:inline-flex;align-items:stretch;min-height:58px;text-decoration:none;color:#0E1F18;background:#F2B33D;font-weight:600;font-size:17px;transition:transform .2s}
+.buy span{display:flex;align-items:center;padding:0 22px 0 28px}
+.buy i{font-style:normal;display:flex;align-items:center;padding:0 26px 0 18px;border-left:2px dashed rgba(14,31,24,.35)}
+.buy:hover{transform:translateY(-2px);color:#0E1F18}
+.lnk{font-weight:600;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;display:inline-flex;align-items:center;min-height:44px}
+.lnk:hover{color:#C4502E}
+
+/* one photo treatment for every picture */
+.gr{position:relative;overflow:hidden;background:#12392B}
+.gr img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.06) brightness(.98) sepia(.14)}
+.gr::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(242,179,61,.12) 0%,rgba(18,57,43,.22) 100%);mix-blend-mode:multiply}
+.gr::before{display:none}
+
+/* header */
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:92px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#12392B}
+.logo svg{width:46px;height:46px}
+.logo b{font-family:'Oranienbaum',serif;font-weight:400;font-size:34px;line-height:1}
+.logo small{display:block;font-size:13px;color:#4F6157;margin-top:2px}
+.nav{display:flex;gap:28px;flex-wrap:wrap}
+.nav a{text-decoration:none;font-size:16px;font-weight:500;padding:10px 0}
+.nav a:hover{color:#C4502E}
+
+/* hero: today first */
+.hero{position:relative;padding:24px 0 0;background:
+  radial-gradient(300px 180px at 10% 28%,rgba(18,57,43,.06),transparent 70%),
+  radial-gradient(360px 220px at 44% 78%,rgba(18,57,43,.06),transparent 70%),
+  radial-gradient(260px 160px at 70% 10%,rgba(242,179,61,.16),transparent 70%),
+  radial-gradient(200px 140px at 30% 8%,rgba(242,179,61,.10),transparent 70%),
+  radial-gradient(420px 260px at 92% 86%,rgba(18,57,43,.08),transparent 70%),
+  linear-gradient(180deg,#F7F8F3 0%,#EEF2E8 55%,#DFE8DC 100%)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:56px;align-items:end}
+.hero-grid>div:first-child{padding-bottom:72px}
+.cta{filter:drop-shadow(0 12px 14px rgba(150,100,20,.35))}
+/* the "today" board on a wooden post */
+.post{position:relative;display:flex;flex-direction:column;align-items:center}
+.post .today{position:relative;z-index:2;width:100%;transform:rotate(-1.2deg);border-radius:6px;border:6px solid #0F3123;box-shadow:0 2px 0 #0B2A1F,0 36px 50px -24px rgba(11,42,31,.6),0 14px 22px -14px rgba(11,42,31,.45);transition:transform .4s}
+.post .today:hover{transform:rotate(0deg)}
+.bolt{position:absolute;top:10px;width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#EDE8DA,#8E8A7E);box-shadow:0 1px 2px rgba(0,0,0,.6)}
+.b1{left:10px}.b2{right:10px}
+.pole{width:30px;height:130px;margin-top:-14px;z-index:1;background:linear-gradient(90deg,#5A3F2A 0%,#8A6545 45%,#6E4E34 100%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),10px 0 18px -6px rgba(11,42,31,.35)}
+.ground{width:240px;height:26px;margin-top:-13px;border-radius:50%;background:radial-gradient(closest-side,rgba(11,42,31,.38),transparent)}
+.hero h1{font-size:clamp(60px,7vw,112px);color:#12392B}
+.hero h1 .h1s{display:flex;align-items:center;gap:14px;font-family:'Jost',sans-serif;font-size:22px;font-weight:600;letter-spacing:.01em;line-height:1.2;color:#C4502E;margin-top:22px}
+.hero h1 .h1s::before{content:'';width:44px;height:2px;background:currentColor;flex:none}
+.hero .sub{font-size:19px !important;color:#4F6157 !important;margin:20px 0 32px !important}
+.hero .sub{font-size:21px;margin:26px 0 34px;max-width:620px;color:#3D4D44}
+.today{background:#12392B;color:#F7F8F3;padding:28px 34px 26px}
+.today .when{font-size:15px;color:#B7CBBE}
+.today .open{font-family:'Oranienbaum',serif;font-size:58px;line-height:1;margin:8px 0 4px}
+.today .row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:baseline;padding:14px 0 0}
+.today .row b{font-family:'Oranienbaum',serif;font-weight:400;font-size:30px;color:#F2B33D}
+.today p{margin:0;font-size:16px;color:#DCE6DF}
+.today .perf{margin:18px -34px 0;color:#F7F8F3}
+.place{height:560px;margin-top:8px}
+.cap{position:absolute;left:24px;bottom:20px;z-index:2;font-size:15px;color:#F7F8F3;max-width:560px;padding:10px 14px;border-radius:4px;background:rgba(11,42,31,.62);backdrop-filter:blur(6px)}
+.place{box-shadow:inset 0 18px 24px -18px rgba(11,42,31,.5)}
+
+/* map */
+.map-sec{background:#12392B;color:#F7F8F3;padding:110px 0 120px}
+.map-head{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:44px}
+.map-head h2{font-size:clamp(52px,5.6vw,88px)}
+.map-head p{margin:0;max-width:440px;color:#CFDDD3}
+.map-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px}
+.map{position:relative;height:640px;border-radius:28px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(247,248,243,.08),0 50px 70px -40px rgba(0,0,0,.75);background:
+  radial-gradient(90px 70px at 7% 12%,#2E6B4E 0 58%,transparent 62%),
+  radial-gradient(70px 56px at 15% 20%,#285F45 0 58%,transparent 62%),
+  radial-gradient(110px 80px at 93% 90%,#2E6B4E 0 58%,transparent 62%),
+  radial-gradient(84px 66px at 86% 10%,#285F45 0 58%,transparent 62%),
+  radial-gradient(64px 50px at 4% 90%,#285F45 0 58%,transparent 62%),
+  radial-gradient(130px 96px at 48% 52%,#23573E 0 58%,transparent 62%),
+  radial-gradient(60px 46px at 72% 52%,#285F45 0 58%,transparent 62%),
+  radial-gradient(70px 50px at 28% 46%,#285F45 0 58%,transparent 62%),
+  #1C4A38}
+.map svg.route{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.map .lake,.map .gate{pointer-events:none}
+.lake{position:absolute;left:2%;top:54%;width:96px;height:64px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#8CC3D9,#4F8FAA);box-shadow:inset 0 4px 10px rgba(0,0,0,.25),0 0 0 3px rgba(247,248,243,.12)}
+.lake span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:12px;font-weight:600;color:#0B2A1F}
+.am{all:unset;box-sizing:border-box;position:absolute;transform:translate(-50%,-50%);z-index:4;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#F7F8F3;cursor:pointer;box-shadow:0 10px 18px -6px rgba(0,0,0,.6);transition:transform .2s}
+.am:hover,.am:focus{transform:translate(-50%,-50%) scale(1.12);z-index:6}
+.am:focus-visible{outline:3px solid #F2B33D;outline-offset:3px}
+.am .lbl{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translate(-50%,6px);padding:8px 12px;border-radius:6px;background:#F7F8F3;color:#12392B;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;line-height:1.25;white-space:nowrap;text-align:left;box-shadow:0 14px 24px -8px rgba(0,0,0,.65);opacity:0;pointer-events:none;transition:opacity .2s, transform .2s}
+.am .lbl small{display:block;font-size:13px;font-weight:500;color:#4F6157}
+.am:hover .lbl,.am:focus .lbl{opacity:1;transform:translate(-50%,0)}
+.am svg{width:18px;height:18px;fill:none;stroke:#C4502E;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.am.car{background:#F2B33D;color:#0E1F18}.am.car svg{stroke:#0E1F18}
+.map-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;font-size:14px;color:#CFDDD3}
+.map-legend span{display:inline-flex;align-items:center;gap:8px}
+.map-legend i{display:inline-block;width:26px;height:6px;border-radius:3px}
+.pin{all:unset;box-sizing:border-box;position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;text-align:center}
+.map .pin{z-index:5;pointer-events:auto}
+.pin .c{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Oranienbaum',serif;font-size:25px;color:#0E1F18;box-shadow:0 0 0 4px #1C4A38,0 0 0 5px rgba(247,248,243,.35),0 14px 20px -6px rgba(0,0,0,.65);transition:transform .2s, box-shadow .2s}
+.pin .t{font-size:15px;font-weight:600;color:#F7F8F3;white-space:nowrap;text-shadow:0 2px 6px rgba(0,0,0,.7)}
+.pin:hover .c{transform:scale(1.08) translateY(-2px)}
+.pin.on .c{transform:scale(1.18);box-shadow:0 0 0 4px #1C4A38,0 0 0 7px #F7F8F3,0 18px 26px -6px rgba(0,0,0,.7)}
+.pin:focus-visible .c{outline:3px solid #F2B33D;outline-offset:4px}
+.gate{position:absolute;transform:translate(-50%,-50%);padding:6px 12px;border-radius:4px;background:#F7F8F3;color:#12392B;font-size:14px;font-weight:600}
+.zone{background:#F7F8F3;color:#0E1F18;display:flex;flex-direction:column;box-shadow:0 50px 70px -40px rgba(0,0,0,.75)}
+.zone .gr{height:300px}
+.zone .gr img{object-position:50% 22%}
+.zone .zb{padding:26px 30px 30px;display:flex;flex-direction:column;gap:12px}
+.zone h3{font-size:56px;color:#12392B}
+.zone .mot{font-size:19px;font-weight:600;margin:0}
+.zone .facts{display:flex;gap:28px;flex-wrap:wrap;font-size:15px;color:#3D4D44}
+.zone .facts b{display:block;font-family:'Oranienbaum',serif;font-weight:400;font-size:30px;color:#0E1F18;line-height:1}
+.zone p{margin:0;color:#3D4D44;font-size:16px}
+
+/* feedings as stubs */
+.feed{padding:96px 0 72px;background:#E3EBE1}
+.feed-head{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap}
+.feed-head h2{font-size:clamp(44px,4.6vw,72px);color:#12392B}
+.stubs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;padding:28px 2px 30px;filter:drop-shadow(0 1px 0 rgba(14,31,24,.18)) drop-shadow(0 14px 16px rgba(14,31,24,.22));scrollbar-width:thin;scrollbar-color:#12392B transparent}
+.stub{min-height:150px;background:#fff;padding:20px 18px 18px;display:flex;flex-direction:column;gap:6px;box-shadow:0 1px 0 rgba(14,31,24,.08)}
+.stub b{font-family:'Oranienbaum',serif;font-weight:400;font-size:40px;line-height:1;color:#12392B}
+.stub span{font-size:15px;line-height:1.3}
+.stub small{font-size:13px;color:#4F6157;margin-top:auto}
+.stub.past{background:#F1F4EF}
+.stub.past b,.stub.past span{color:#7A887F}
+.stub.past small::after{content:' · прошло'}
+.stub.next{background:#F2B33D}
+.stub.next small{color:#0E1F18}
+
+/* night: one huge quiet photo */
+.night{position:relative;height:820px;margin-top:64px}
+.night .gr{position:absolute;inset:0}
+.night .txt{position:absolute;left:0;right:0;bottom:64px;z-index:2;color:#F7F8F3}
+.night h2{font-size:clamp(80px,10vw,168px);text-shadow:0 6px 30px rgba(0,0,0,.4)}
+.night p{max-width:560px;font-size:19px;margin:18px 0 10px;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+
+/* tickets: dense */
+.tix{padding:110px 0}
+.tix-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:40px}
+.tix-head h2{font-size:clamp(52px,5.6vw,88px);color:#12392B}
+.tix-head p{margin:0;color:#3D4D44}
+.tickets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;filter:drop-shadow(0 20px 22px rgba(14,31,24,.18))}
+.ticket{display:grid;grid-template-columns:minmax(0,1fr) 92px;min-height:190px;background:#fff;box-shadow:0 1px 0 rgba(14,31,24,.08);transition:transform .2s}
+.ticket:hover{transform:translateY(-3px) rotate(-.6deg)}
+.ticket .m{padding:22px 20px;display:flex;flex-direction:column;gap:4px}
+.ticket .m h3{margin:0 0 8px;font-size:19px;font-weight:600}
+.ticket .m span{font-size:15px;color:#3D4D44}
+.ticket .m span b{color:#0E1F18}
+.ticket .s{border-left:2px dashed #CBD5CD;display:flex;align-items:center;justify-content:center;font-family:'Oranienbaum',serif;font-size:46px;color:#12392B}
+.ticket.free{background:#12392B;color:#F7F8F3}
+.ticket.free .m span{color:#CFDDD3}
+.ticket.free .s{color:#F2B33D;border-color:rgba(247,248,243,.3)}
+.tix-more{display:flex;gap:28px;flex-wrap:wrap;align-items:center;margin-top:28px;color:#3D4D44}
+
+/* residents */
+.res{background:#E6EEE6;padding:100px 0}
+.res h2{font-size:clamp(48px,5vw,80px);color:#12392B}
+.legend{display:flex;gap:10px 20px;flex-wrap:wrap;font-size:15px;align-items:center;margin-top:20px;color:#3D4D44}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.tag{display:inline-flex;align-items:center;height:24px;padding:0 8px;font-size:13px;font-weight:600;border-radius:3px;color:#0E1F18}
+.LC{background:#BFD8B4}.NT{background:#E3DB8C}.VU{background:#F2C46A}.EN{background:#EE8452}.CR{background:#C8352A;color:#fff}
+.row-cards{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:16px;margin-top:40px}
+.rc{text-decoration:none;color:#0E1F18;display:flex;flex-direction:column;gap:12px}
+.rc .gr{height:300px;box-shadow:0 26px 40px -26px rgba(14,31,24,.55);transition:transform .3s, box-shadow .3s}
+.rc:hover .gr{transform:translateY(-4px);box-shadow:0 36px 50px -26px rgba(14,31,24,.6)}
+.news-main .gr{box-shadow:0 30px 44px -28px rgba(14,31,24,.55)}
+.rc:first-child .gr{height:420px}
+.rc .tag{position:absolute;top:12px;left:12px;z-index:3}
+.rc h3{font-size:38px;color:#12392B}
+.rc p{margin:0;font-size:15px;color:#3D4D44}
+.rc .z{font-size:14px;font-weight:600}
+
+/* news: plain */
+.news{padding:100px 0 110px}
+.news h2{font-size:clamp(48px,5vw,80px);color:#12392B;margin-bottom:36px}
+.news-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px}
+.news-main .gr{height:380px}
+.news-main h3{font-family:'Oranienbaum',serif;font-weight:400;font-size:40px;line-height:1.05;margin:18px 0 10px}
+.cat{display:inline-block;font-size:14px;font-weight:600;color:#C4502E}
+.news-list a{display:block;padding:22px 0;border-top:1px solid rgba(14,31,24,.16);text-decoration:none}
+.news-list a:last-child{border-bottom:1px solid rgba(14,31,24,.16)}
+.news-list h3{font-family:'Oranienbaum',serif;font-weight:400;font-size:30px;line-height:1.1;margin:6px 0 6px}
+.news-list p{margin:0;font-size:16px;color:#3D4D44}
+.news-list a:hover h3{color:#C4502E}
+
+/* footer */
+.foot{background:#0B2A1F;color:#B7CBBE;padding:80px 0 36px}
+.foot-top{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:40px}
+.foot .logo{color:#F7F8F3}
+.foot .logo small{color:#8FA898}
+.foot h4{font-size:15px;font-weight:600;color:#F7F8F3;margin:0 0 14px}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:16px}
+.foot ul a{text-decoration:none}.foot ul a:hover{color:#F2B33D}
+.foot-bot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:64px;padding-top:22px;border-top:1px solid rgba(247,248,243,.14);font-size:13px;color:#8FA898}
+.credits{margin-top:16px;font-size:12px;line-height:1.6;color:#7E9587}
+
+@media (max-width:1000px){
+  .wrap{padding:0 16px}
+  .hero-grid,.map-grid,.tix-head,.news-grid,.foot-top{grid-template-columns:minmax(0,1fr)}
+  .place{height:360px}
+  .map{height:520px;border-radius:40px}
+  .pin .t{font-size:13px}
+  .tickets{grid-template-columns:minmax(0,1fr)}
+  .row-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rc:first-child .gr,.rc .gr{height:260px}
+  .night{height:620px}
+  .nav{order:3;width:100%;flex-wrap:nowrap;overflow-x:auto;gap:20px;scrollbar-width:none}.nav a{white-space:nowrap}
+  .hero-grid>div:first-child{padding-bottom:24px}
+  .am{width:36px;height:36px}
+  .stubs{display:flex;overflow-x:auto}
+  .stub{flex:0 0 170px}
+  .hero h1{font-size:52px}
+  .lake{display:none}
+}
+
+/* ——— shared kit ——— */
+.k-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.k-lnk{all:unset;box-sizing:border-box;cursor:pointer;font-weight:600;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;display:inline-flex;align-items:center;min-height:44px}
+.k-lnk:hover{color:#C4502E}
+.k-lnk:focus-visible,.k-cart:focus-visible,.k-buy:focus-visible,.k-x:focus-visible,.k-subbtn:focus-visible{outline:3px solid #F2B33D;outline-offset:3px}
+.k-hr{display:flex;align-items:center;gap:18px}
+.k-cart{position:relative;display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:#12392B;color:#F7F8F3;text-decoration:none;box-shadow:0 10px 18px -10px rgba(11,42,31,.7);transition:transform .2s}
+.k-cart:hover{transform:translateY(-2px);color:#F7F8F3}
+.k-cart svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.k-cart b{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:#F2B33D;color:#0E1F18;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.k-buy{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:stretch;min-height:58px;color:#0E1F18;background:#F2B33D;font-family:'Jost',sans-serif;font-weight:600;font-size:17px;border-radius:8px;transition:transform .2s;
+  -webkit-mask:radial-gradient(circle 11px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat;
+  mask:radial-gradient(circle 11px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat}
+.k-buy span{display:flex;align-items:center;padding:0 22px 0 28px}
+.k-buy i{font-style:normal;display:flex;align-items:center;padding:0 26px 0 18px;border-left:2px dashed rgba(14,31,24,.35)}
+.k-buy:hover{transform:translateY(-2px);color:#0E1F18}
+.k-shadow{display:inline-block;filter:drop-shadow(0 12px 14px rgba(150,100,20,.35))}
+.k-foot{background:#0B2A1F;color:#B7CBBE;padding:80px 0 36px;font-size:16px}
+.k-foot .logo{color:#F7F8F3}.k-foot .logo small{color:#8FA898}
+.k-foot-top{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:40px}
+.k-faddr{margin:22px 0 0;line-height:1.6}
+.k-faddr .k-lnk{min-height:0;color:#F7F8F3}
+.k-foot h4{font-size:15px;font-weight:600;color:#F7F8F3;margin:0 0 14px}
+.k-foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.k-foot ul a,.k-foot-bot a{text-decoration:none}.k-foot ul a:hover,.k-foot-bot a:hover{color:#F2B33D}
+.k-sub{display:flex;gap:8px;margin-top:24px;max-width:460px}
+.k-sub input{flex:1;min-width:0;height:50px;padding:0 16px;border-radius:6px;border:1.5px solid rgba(247,248,243,.3);background:rgba(247,248,243,.06);color:#F7F8F3;font:inherit}
+.k-sub input::placeholder{color:#8FA898}
+.k-subbtn{all:unset;box-sizing:border-box;cursor:pointer;height:50px;padding:0 20px;border-radius:6px;background:#F2B33D;color:#0E1F18;font-weight:600}
+.k-foot-bot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:56px;padding-top:22px;border-top:1px solid rgba(247,248,243,.14);font-size:13px;color:#8FA898}
+.k-credits{margin:14px 0 0;font-size:12px;line-height:1.6;color:#7E9587}
+.k-veil{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(6,20,14,.62);backdrop-filter:blur(4px)}
+.k-modal{position:relative;width:min(580px,100%);background:#12392B;color:#F7F8F3;border-radius:8px;border:6px solid #0F3123;padding:40px 38px 32px;box-shadow:0 2px 0 #0B2A1F,0 50px 90px -24px rgba(0,0,0,.75)}
+.k-bolt{position:absolute;top:10px;width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#EDE8DA,#8E8A7E)}
+.k-mtag{display:inline-block;padding:4px 12px;border-radius:999px;background:#F2B33D;color:#0E1F18;font-size:13px;font-weight:600}
+.k-mh{font-family:'Oranienbaum',serif;font-weight:400;font-size:44px;line-height:1;margin:16px 0 14px}
+.k-mp{margin:0;color:#CFDDD3;font-size:17px;line-height:1.55}
+.k-mrow{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:26px}
+.k-back{color:#F7F8F3}
+.k-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:55;display:flex;align-items:center;gap:16px;padding:12px 12px 12px 20px;border-radius:8px;background:#12392B;color:#F7F8F3;box-shadow:0 24px 40px -14px rgba(0,0,0,.6);font-size:15px;max-width:calc(100% - 32px)}
+.k-toastgo{padding:10px 16px;border-radius:6px;background:#F2B33D;color:#0E1F18;font-weight:600;text-decoration:none;white-space:nowrap}
+.k-x{all:unset;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#B7CBBE}
+.k-field{display:flex;flex-direction:column;gap:6px;font-size:15px;font-weight:600}
+.k-field input,.k-field select,.k-field textarea{font:inherit;font-weight:400;font-size:17px;padding:13px 15px;border:1.5px solid #CBD5CD;border-radius:6px;background:#fff;color:#0E1F18}
+.k-field textarea{min-height:120px;resize:vertical}
+.k-field input:focus,.k-field select:focus,.k-field textarea:focus{outline:3px solid #F2B33D;outline-offset:1px;border-color:#12392B}
+.k-check{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4}
+.k-check input{width:20px;height:20px;margin:2px 0 0;accent-color:#12392B}
+@media (max-width:1000px){
+  .k-foot-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .k-foot-top>div:first-child{grid-column:1 / -1}
+  .k-hr .k-lnk{display:none}
+  .k-modal{padding:32px 20px 24px}
+  .k-mh{font-size:34px}
+  .k-toast{left:16px;right:16px;transform:none;flex-wrap:wrap}
+}
+
+</style>
+</helmet>
+
+<div class="k">
+
+  <header class="hdr"><div class="wrap">
+    <a class="logo" href="index.html" aria-label="Ковчег, на главную">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M11.5 19 L20 11.5 L28.5 19" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"></path><rect x="14.5" y="19" width="11" height="7" fill="none" stroke="currentColor" stroke-width="2.4"></rect><path d="M4 26 H36 L31 33 H9 Z" fill="currentColor"></path><path d="M5 37.5 q3.75 -2.5 7.5 0 t7.5 0 t7.5 0 t7.5 0" fill="none" stroke="#F2B33D" stroke-width="2" stroke-linecap="round"></path></svg>
+      <span><b>Ковчег</b><small>зоопарк, Минск</small></span>
+    </a>
+    <nav class="nav" aria-label="Главное меню">
+      <a href="animals.html">Животные</a>
+      <a href="#map">Карта</a>
+      <a href="tickets.html">Билеты</a>
+      <a href="experiences.html">Впечатления</a>
+      <a href="visit.html">Как добраться</a>
+      <a href="about.html">О зоопарке</a>
+    </nav>
+    <div class="k-hr">
+      <button class="k-lnk" type="button" onClick="{{callDemo}}">+375 17 000-00-00</button>
+      <a class="k-cart" href="cart.html" aria-label="Корзина"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2z"></path><path d="M9 8V6.5a3 3 0 0 1 6 0V8"></path></svg><sc-if value="{{hasCart}}"><b>{{cartCount}}</b></sc-if></a>
+    </div>
+  </div></header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <h1 class="d">Тигры, слоны и пингвины <span class="h1s">в 25 минутах от центра Минска</span></h1>
+          <p class="sub">3 200 животных в семи зонах. Один билет на всё, кормления включены.</p>
+          <div class="cta" style="display:flex;gap:28px;flex-wrap:wrap;align-items:center">
+            <a class="buy tk" href="tickets.html"><span>Купить билет</span><i>от 11 Br</i></a>
+            <a class="lnk" href="visit.html">Как добраться</a>
+          </div>
+        </div>
+        <div class="post">
+        <div class="today">
+          <i class="bolt b1"></i><i class="bolt b2"></i>
+          <div class="when">Сегодня, среда, 11 ноября</div>
+          <div class="open">Открыто до 17:00</div>
+          <p>Касса до 16:00 · вход с 10:00</p>
+          <hr class="perf">
+          <div class="row"><b>14:00</b><p>Ближайшее кормление: пингвины, Арктика</p></div>
+          <div class="row"><b>15:00</b><p>Тренировка тигров, Азия</p></div>
+          <hr class="perf">
+          <p style="margin-top:16px">В ноябре крупные животные уходят в зимние квартиры — их видно через стекло. Тропики и Арктика открыты в любую погоду.</p>
+        </div>
+        <div class="pole" aria-hidden="true"></div>
+        <div class="ground" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gr place">
+    <img src="img/pr-home.jpg" alt="Слоны в просторном вольере у пруда, вокруг зелень и камни, решёток нет">
+    <span class="cap">Вольер без решёток: пруд, камни, деревья. Животное всегда может уйти от взглядов.</span>
+  </div>
+
+  <section class="map-sec" id="map">
+    <div class="wrap">
+      <div class="map-head">
+        <h2 class="d">Карта парка</h2>
+        <p>Семь зон по кругу, весь маршрут — 6,5 км. Начинайте с Саванны: до полудня животные активнее. Нажмите на зону.</p>
+      </div>
+      <div class="map-grid">
+        <div class="map">
+          <svg class="route" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <ellipse cx="50" cy="50" rx="38" ry="35" fill="none" stroke="#0E2B20" stroke-opacity=".5" stroke-width="16" vector-effect="non-scaling-stroke" transform="translate(0 1)"></ellipse>
+            <ellipse cx="50" cy="50" rx="38" ry="35" fill="none" stroke="#D9C9A0" stroke-width="12" vector-effect="non-scaling-stroke"></ellipse>
+            <ellipse cx="50" cy="50" rx="38" ry="35" fill="none" stroke="#F7F8F3" stroke-width="1.5" stroke-dasharray="6 8" vector-effect="non-scaling-stroke"></ellipse>
+            <ellipse cx="50" cy="52" rx="22" ry="19" fill="none" stroke="#F2B33D" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round" vector-effect="non-scaling-stroke"></ellipse>
+          </svg>
+          <span class="lake" aria-hidden="true"><span>озеро</span></span>
+          <span class="gate" style="left:40%;top:88%;z-index:3;box-shadow:0 10px 18px -6px rgba(0,0,0,.6)">Вход</span>
+          <button type="button" class="am" style="left:52%;top:72%" aria-label="Кафе «Белая Пуща»"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"></path><path d="M16 9h2a2 2 0 0 1 0 4h-2"></path></svg><span class="lbl">Кафе «Белая Пуща»<small>драники, супы, детское меню · ≈18 Br</small></span></button>
+          <button type="button" class="am" style="left:26%;top:91%" aria-label="Медпункт"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span class="lbl">Медпункт<small>фельдшер, первая помощь бесплатно</small></span></button>
+          <button type="button" class="am" style="left:55%;top:94%" aria-label="Магазин «Ковчег»"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg><span class="lbl">Магазин «Ковчег»<small>15% с покупки — на охрану природы</small></span></button>
+          <button type="button" class="am" style="left:50%;top:48%" aria-label="Зоошкола и ветцентр"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h6a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4z"></path><path d="M20 5h-6a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h6z"></path></svg><span class="lbl">Зоошкола и ветцентр<small>операционная видна через стекло</small></span></button>
+          <button type="button" class="am" style="left:33%;top:62%" aria-label="Пикник-зона «Поляна»"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="5"></circle><path d="M12 14v6"></path></svg><span class="lbl">Пикник-зона «Поляна»<small>бесплатно, своя еда — можно</small></span></button>
+          <button type="button" class="am" style="left:39%;top:33%" aria-label="Кофейня «Бамбук»"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"></path><path d="M16 9h2a2 2 0 0 1 0 4h-2"></path></svg><span class="lbl">Кофейня «Бамбук»<small>кофе, выпечка, десерты · ≈8 Br</small></span></button>
+          <button type="button" class="am" style="left:24%;top:31%" aria-label="Павильон «Саванна»"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"></path><path d="M16 9h2a2 2 0 0 1 0 4h-2"></path></svg><span class="lbl">Павильон «Саванна»<small>гриль и терраса над жирафами · ≈24 Br</small></span></button>
+          <button type="button" class="am" style="left:73%;top:74%" aria-label="Детская площадка"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="6" r="2"></circle><path d="M5 20 L12 10 L19 20"></path></svg><span class="lbl">Детская площадка<small>для детей до 10 лет, с родителями</small></span></button>
+          <button type="button" class="am car" style="left:68%;top:34%" aria-label="Электромобиль «Сафари»"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="18" height="7" rx="2"></rect><circle cx="7.5" cy="17" r="1.6"></circle><circle cx="16.5" cy="17" r="1.6"></circle></svg><span class="lbl">Электромобиль «Сафари»<small>6 остановок, каждые 15 мин · 12 Br, детям 6 Br</small></span></button>
+          <sc-for list="{{zones}}" as="z">
+            <button class="pin {{z.cls}}" style="left:{{z.x}}%;top:{{z.y}}%" onClick="{{z.pick}}" aria-pressed="{{z.pressed}}" aria-label="{{z.name}}">
+              <span class="c" style="background:{{z.c}}">{{z.n}}</span>
+              <span class="t">{{z.short}}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div class="zone">
+          <div class="gr"><img src="{{cur.img}}" alt="{{cur.alt}}"></div>
+          <div class="zb">
+            <h3 class="d">{{cur.name}}</h3>
+            <p class="mot">{{cur.motto}}</p>
+            <div class="facts"><span><b>{{cur.ha}}</b>площадь</span><span><b>{{cur.sp}}</b>видов</span><span><b>{{cur.t}}</b>на осмотр</span></div>
+            <p>{{cur.desc}}</p>
+            <p><span style="font-weight:600;color:#0E1F18">Не пропустите:</span> {{cur.miss}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="feed">
+    <div class="wrap">
+      <div class="feed-head">
+        <h2 class="d">Кормления сегодня</h2>
+        <span style="color:#3D4D44">Входят в билет. Прошедшие — бледнее, ближайшее — жёлтым.</span>
+      </div>
+      <div class="stubs">
+        <sc-for list="{{slots}}" as="x">
+          <div class="stub tk tk-v {{x.cls}}"><b>{{x.t}}</b><span>{{x.e}}</span><small>{{x.w}}</small></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section class="night">
+    <div class="gr"><img src="img/lionyawn.jpg" alt="Лев зевает, видны клыки"></div>
+    <div class="txt">
+      <div class="wrap">
+        <h2 class="d">Ночь в зоопарке</h2>
+        <p>Когда все уходят домой. Ужин у саванны, обход с фонариками, сон в палатках и завтрак с жирафами. Пятница и суббота, май–сентябрь.</p>
+        <a class="lnk" href="experiences.html#night" style="color:#F7F8F3">95 Br, детям 85 Br · подробнее</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tix" id="tickets">
+    <div class="wrap">
+      <div class="tix-head">
+        <h2 class="d">Билеты</h2>
+        <p>Один билет — все семь зон, кормления и лекции зоошколы. Онлайн-билет действует 30 дней, вернуть можно за сутки до визита.</p>
+      </div>
+      <div class="tickets">
+        <div class="ticket tk"><div class="m"><h3>Взрослый</h3><span>будни <b>22 Br</b></span><span>выходные <b>28 Br</b></span></div><div class="s">22</div></div>
+        <div class="ticket tk"><div class="m"><h3>Детский, 6–17 лет</h3><span>будни <b>11 Br</b></span><span>выходные <b>14 Br</b></span></div><div class="s">11</div></div>
+        <div class="ticket tk"><div class="m"><h3>Семейный</h3><span>2 взрослых + до 3 детей</span><span>будни <b>55</b> · выходные <b>70 Br</b></span></div><div class="s">55</div></div>
+        <div class="ticket tk free"><div class="m"><h3>Дети до 6 лет</h3><span>со взрослым</span><span>в любой день</span></div><div class="s">0</div></div>
+      </div>
+      <div class="tix-more">
+        <span>Студентам и пенсионерам — 14 и 17 Br. Годовой абонемент — от 120 Br.</span>
+        <a class="lnk" href="tickets.html">Все цены и льготы</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="res">
+    <div class="wrap">
+      <h2 class="d">Кого навестить</h2>
+      <div class="legend" aria-label="Статус вида в Красной книге МСОП">
+        <span style="font-weight:600;color:#0E1F18">Статус в Красной книге:</span>
+        <span><span class="tag LC">LC</span> вне угрозы</span>
+        <span><span class="tag NT">NT</span> близок к угрожаемому</span>
+        <span><span class="tag VU">VU</span> уязвимый вид</span>
+        <span><span class="tag EN">EN</span> под угрозой исчезновения</span>
+        <span><span class="tag CR">CR</span> на грани исчезновения</span>
+      </div>
+      <div class="row-cards">
+        <sc-for list="{{stars}}" as="s">
+          <a class="rc" href="{{s.href}}" onClick="{{s.go}}">
+            <div class="gr"><img src="{{s.img}}" alt="{{s.alt}}"><span class="tag {{s.st}}">{{s.st}}</span></div>
+            <span class="z" style="color:{{s.c}}">{{s.zone}} · {{s.sp}}, {{s.age}}</span>
+            <h3 class="d">{{s.name}}</h3>
+            <p>{{s.fact}}</p>
+          </a>
+        </sc-for>
+      </div>
+      <a class="lnk" href="animals.html" style="margin-top:20px">Все 14 жителей</a>
+    </div>
+  </section>
+
+  <section class="news" id="news">
+    <div class="wrap">
+      <h2 class="d">Новости</h2>
+      <div class="news-grid">
+        <a class="news-main" href="news.html#n1" style="text-decoration:none">
+          <div class="gr"><img src="img/kangaroo.jpg" alt="Рыжие кенгуру на равнине"></div>
+          <span class="cat" style="margin-top:18px;display:block">Малыши</span>
+          <h3>В австралийской зоне родился первый валлаби за три года</h3>
+          <p style="margin:0;color:#3D4D44">Встречайте самого маленького жителя — пока его видно только в сумке у мамы.</p>
+        </a>
+        <div class="news-list">
+          <a href="news.html#n2"><span class="cat">События</span><h3>Пять зубров отправились в национальный парк</h3><p>Рассказываем о дороге от Минска до пущи.</p></a>
+          <a href="news.html#n3"><span class="cat">Объявления</span><h3>Аудиогид теперь и на белорусском</h3><p>Русский, белорусский и английский — в одном аудиогиде.</p></a>
+          <a href="news.html#n4"><span class="cat">Ноябрь</span><h3>Сезон тёплых павильонов</h3><p>Экскурсии «Подготовка к зиме» по выходным.</p></a>
+        </div>
+      </div>
+      <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:center;margin-top:28px">
+        <a class="lnk" href="news.html">Все новости</a>
+        <span style="color:#3D4D44;font-size:16px">Рассылка — одно письмо в месяц, без спама.</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="k-foot">
+    <div class="wrap">
+      <div class="k-foot-top">
+        <div>
+          <a class="logo k-flogo" href="index.html" aria-label="Ковчег, на главную"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M11.5 19 L20 11.5 L28.5 19" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"></path><rect x="14.5" y="19" width="11" height="7" fill="none" stroke="currentColor" stroke-width="2.4"></rect><path d="M4 26 H36 L31 33 H9 Z" fill="currentColor"></path><path d="M5 37.5 q3.75 -2.5 7.5 0 t7.5 0 t7.5 0 t7.5 0" fill="none" stroke="#F2B33D" stroke-width="2" stroke-linecap="round"></path></svg><span><b>Ковчег</b><small>зоопарк, Минск, с 2009 года</small></span></a>
+          <p class="k-faddr">Минск, ул. Зелёная Роща, 1<br><button class="k-lnk" type="button" onClick="{{callDemo}}">+375 17 000-00-00</button> · <button class="k-lnk" type="button" onClick="{{mailDemo}}">info@kovcheg-zoo.by</button></p>
+          <form class="k-sub">
+            <label class="k-vh" for="k-sub-email">Email для новостей</label>
+            <input id="k-sub-email" type="email" placeholder="Email · новости раз в месяц">
+            <button class="k-subbtn" type="button" onClick="{{formDemo}}">Подписаться</button>
+          </form>
+        </div>
+        <div><h4>Посетителям</h4><ul><li><a href="tickets.html">Билеты</a></li><li><a href="visit.html">Как добраться</a></li><li><a href="faq.html">Вопросы и правила</a></li><li><a href="contacts.html">Контакты</a></li><li><a href="cart.html">Корзина</a></li></ul></div>
+        <div><h4>Зоопарк</h4><ul><li><a href="about.html">О зоопарке</a></li><li><a href="about.html#science">Природа и наука</a></li><li><a href="experiences.html">Впечатления</a></li><li><a href="news.html">Новости</a></li><li><a href="support.html">Поддержать</a></li></ul></div>
+        <div><h4>Часы</h4><ul><li>Лето: 9:00–20:00</li><li>Зима: 10:00–17:00</li><li>Без выходных</li></ul></div>
+      </div>
+      <div class="k-foot-bot">
+        <span>© 2009–2026 Зоопарк «Ковчег» · демо-сайт для портфолио, зоопарк вымышленный</span>
+        <span><a href="legal.html#privacy">Политика конфиденциальности</a> · <a href="legal.html#terms">Публичная оферта</a></span>
+      </div>
+      <p class="k-credits">Фото: Wikimedia Commons, иллюстративные (CC BY, CC BY-SA, CC0, PD); авторы указаны на страницах. Дизайн и вёрстка — Анатолий, Telegram @isthisthedaggr.</p>
+    </div>
+  </footer>
+  <sc-if value="{{toastOn}}">
+    <div class="k-toast" role="status"><span>Добавлено в корзину: <b>{{toast}}</b></span><a class="k-toastgo" href="cart.html">В корзину →</a><button class="k-x" type="button" aria-label="Закрыть" onClick="{{closeToast}}">×</button></div>
+  </sc-if>
+  <sc-if value="{{demo}}">
+    <div class="k-veil" role="dialog" aria-modal="true" aria-labelledby="k-demo-title">
+      <div class="k-modal">
+        <i class="k-bolt" style="left:10px"></i><i class="k-bolt" style="right:10px"></i>
+        <span class="k-mtag">Пробный сайт</span>
+        <h2 id="k-demo-title" class="k-mh">{{demoTitle}}</h2>
+        <p class="k-mp">{{demoText}}</p>
+        <div class="k-mrow">
+          <span class="k-shadow"><a class="k-buy" href="https://t.me/isthisthedaggr" target="_blank" rel="noopener"><span>Написать в Telegram</span><i>@isthisthedaggr</i></a></span>
+          <sc-if value="{{isAnimal}}"><a class="k-lnk k-back" href="altai.html">Страница Алтая</a></sc-if>
+          <button class="k-lnk k-back" type="button" onClick="{{closeDemo}}">Вернуться на сайт</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</template>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":6400}}'>
+class Component extends DCLogic {
+  kitInit() {
+    let n = 0;
+    try { const c = JSON.parse(localStorage.getItem('kovcheg-cart') || '[]'); n = c.reduce((s, x) => s + (x.qty || 0), 0); } catch (e) {}
+    this.setState({ cartCount: n });
+    setTimeout(() => { try { const h = location.hash.slice(1); const el = h && document.getElementById(h); if (el) el.scrollIntoView(); } catch (e) {} }, 60);
+  }
+  addToCart(item) {
+    let c = null;
+    try { c = JSON.parse(localStorage.getItem('kovcheg-cart') || '[]'); } catch (e) { c = null; }
+    if (c) {
+      const f = c.find(x => x.id === item.id);
+      if (f) f.qty += item.qty || 1; else c.push({ ...item, qty: item.qty || 1 });
+      try { localStorage.setItem('kovcheg-cart', JSON.stringify(c)); } catch (e) {}
+      this.setState({ cartCount: c.reduce((s, x) => s + x.qty, 0), toast: item.label });
+    } else {
+      this.setState({ cartCount: ((this.state && this.state.cartCount) || 0) + (item.qty || 1), toast: item.label });
+    }
+  }
+  kit() {
+    const s = this.state || {};
+    return {
+      demo: !!s.demo, isAnimal: s.demoKind === 'animal',
+      demoTitle: s.demoKind === 'animal' ? 'Страница есть только у Алтая' : (s.demoWhat || 'Эта функция') + ' — только в настоящем сайте',
+      demoText: s.demoKind === 'animal' ? 'В демо-версии сделана одна страница жителя — амурский тигр Алтай. Страницы остальных животных появятся в настоящем сайте. Хотите такой сайт — напишите мне в Telegram.' : '«Ковчег» — демо-проект для портфолио, зоопарк вымышленный, поэтому оплата, звонки и отправка форм здесь не работают. Хотите такой же сайт для своего бизнеса — напишите мне в Telegram, обсудим.',
+      cartCount: s.cartCount || 0, hasCart: (s.cartCount || 0) > 0,
+      toastOn: !!s.toast, toast: s.toast || '',
+      closeToast: () => this.setState({ toast: '' }),
+      callDemo: () => this.setState({ demo: true, demoKind: '', demoWhat: 'Звонок' }),
+      mailDemo: () => this.setState({ demo: true, demoKind: '', demoWhat: 'Письмо' }),
+      payDemo: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ demo: true, demoKind: '', demoWhat: 'Оплата' }); },
+      formDemo: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ demo: true, demoKind: '', demoWhat: 'Отправка формы' }); },
+      animalDemo: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ demo: true, demoKind: 'animal' }); },
+      closeDemo: () => this.setState({ demo: false })
+    };
+  }
+  componentDidMount() { this.kitInit(); }
+  constructor(props) { super(props); this.state = { z: 1 }; }
+  renderVals() {
+    const P = [[19.4, 73], [10.8, 43.8], [30.5, 19.6], [63, 17.1], [86, 38], [83, 67.5], [63, 83]];
+    const Z = [
+      { n: '1', c: '#7FAF78', name: 'Белорусская пуща', short: 'Пуща', motto: 'Так выглядел лес до нас.', ha: '9 га', sp: '52', t: '1,5 ч', img: 'img/bison.jpg', alt: 'Зубр на лесной поляне', desc: '9 гектаров смешанного леса с вековыми дубами, болотными лугами и лесным озером. Здесь живут те, кто всегда жил в Беларуси.', miss: 'настил над болотом и видовая башня «Зубриный край» высотой 18 метров.' },
+      { n: '2', c: '#E0A33A', name: 'Саванна', short: 'Саванна', motto: 'Горизонт без решёток.', ha: '8 га', sp: '48', t: '1,5 ч', img: 'img/zebra.jpg', alt: 'Зебры на водопое', desc: 'Жирафы, зебры, носороги и антилопы пасутся одним стадом. Хищников отделяют глубокие рвы, поэтому кажется, что львица стоит прямо за спиной.', miss: 'подвесной мост, где жирафы едят из рук в 12:00 и 16:00.' },
+      { n: '3', c: '#D8724F', name: 'Азия', short: 'Азия', motto: 'От тайги до джунглей.', ha: '7 га', sp: '46', t: '1 ч', img: 'img/elephant.jpg', alt: 'Азиатский слон купается в реке', desc: 'Бамбуковые рощи, скалы и пагода. Амурские тигры, слоны и красные панды. За купанием слонов можно смотреть через подводное стекло.', miss: 'подводное окно «Слон плавает», купание в 12:30.' },
+      { n: '4', c: '#9CCAE0', name: 'Арктика', short: 'Арктика', motto: 'Край, где всегда зима.', ha: '3 га', sp: '22', t: '45 мин', img: 'img/polar2.jpg', alt: 'Белый медведь на дрейфующем льду', desc: 'Бассейны и ледяные гроты. Подводный тоннель длиной 24 метра проходит прямо под плавающими медведями.', miss: 'кормление пингвинов в 14:00.' },
+      { n: '5', c: '#5FB08F', name: 'Тропики', short: 'Тропики', motto: 'Лето, которое не заканчивается.', ha: '2 га', sp: '78', t: '1 ч', img: 'img/toucan.jpg', alt: 'Тукан токо', desc: 'Крытый павильон: всегда +26 °C. Птицы летают свободно, а в «Ночном мире» днём ночь.', miss: 'зал бабочек — они садятся на плечи.' },
+      { n: '6', c: '#E58E54', name: 'Австралия', short: 'Австралия', motto: 'Здесь всё наоборот — и это хорошо.', ha: '4 га', sp: '28', t: '40 мин', img: 'img/kangaroo.jpg', alt: 'Рыжие кенгуру на равнине', desc: 'Рыжая земля и эвкалипты. В вольер с кенгуру можно зайти без ограждения — не кормить, не трогать, держать дистанцию.', miss: 'коала-бар, завтрак коалы в 11:00.' },
+      { n: '7', c: '#D9C681', name: 'Ферма', short: 'Ферма', motto: 'Здесь можно трогать.', ha: '2 га', sp: '36', t: '40 мин', img: 'img/goat.jpg', alt: 'Козлёнок', desc: 'Деревенский двор для самых младших: козы, альпаки, кролики и пони. Корм из автомата — 2 Br за стаканчик.', miss: '«Козий мост» и пони, круг за 5 Br.' }
+    ];
+    const sel = this.state.z;
+    const zones = Z.map((z, i) => ({ ...z, x: P[i][0], y: P[i][1], cls: i === sel ? 'on' : '', pressed: i === sel ? 'true' : 'false', pick: () => this.setState({ z: i }) }));
+    const S = [['10:30', 'Завтрак медведя Бори', 'Пуща'], ['11:00', 'Завтрак коалы Лео', 'Австралия'], ['11:30', 'Кормление львов', 'Саванна'], ['12:00', 'Жирафы едят из рук', 'Саванна'], ['12:30', 'Купание слонихи Дары', 'Азия'], ['13:30', 'Смена караула у сурикат', 'Саванна'], ['14:00', 'Кормление пингвинов', 'Арктика'], ['15:00', 'Тренировка тигров', 'Азия'], ['15:30', 'Медведи и лёд', 'Арктика'], ['16:30', 'Кенгуру', 'Австралия']];
+    const slots = S.map(s => ({ t: s[0], e: s[1], w: s[2], cls: s[0] === '14:00' ? 'next' : (s[0] < '14:00' ? 'past' : '') }));
+    const stars = [
+      { zone: 'Азия', c: '#B5532F', name: 'Алтай', sp: 'амурский тигр', age: '7 лет', st: 'EN', fact: 'Приехал из Новосибирска. В 2025 году у него и тигрицы Амуры родились двойняшки.', img: 'img/tiger2.jpg', alt: 'Амурский тигр лежит на траве', href: 'altai.html', go: () => {} },
+      { zone: 'Азия', c: '#B5532F', name: 'Ява', sp: 'орангутан', age: '19 лет', st: 'CR', fact: 'Знает больше 40 жестов и открывает замки.', img: 'img/orangutan.jpg', alt: 'Орангутан', href: 'animals.html', go: (e) => this.kit().animalDemo(e) },
+      { zone: 'Арктика', c: '#3F7F9E', name: 'Нордик', sp: 'белый медведь', age: '10 лет', st: 'VU', fact: 'Проплывает без остановки 30 км.', img: 'img/polar.jpg', alt: 'Белый медведь', href: 'animals.html', go: (e) => this.kit().animalDemo(e) },
+      { zone: 'Пуща', c: '#4E7A49', name: 'Кряж', sp: 'зубр', age: '9 лет', st: 'NT', fact: 'Родился у нас в 2017-м и стал вожаком стада.', img: 'img/bison.jpg', alt: 'Зубр', href: 'animals.html', go: (e) => this.kit().animalDemo(e) }
+    ];
+    return { ...this.kit(),  zones, cur: zones[sel], slots, stars };
+  }
+}
+</script>
+</body>
+</html>

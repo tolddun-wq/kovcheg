@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Ковчег — вопросы и правила</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="img/favicon.svg">
+<script src="js/kovcheg.js"></script>
+</head>
+<body>
+<template id="x-dc">
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&amp;family=Oranienbaum&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F7F8F3}
+a{color:inherit}
+.k{font-family:'Jost',system-ui,sans-serif;color:#0E1F18;background:#F7F8F3;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow:hidden;position:relative}
+.k *{box-sizing:border-box}
+.wrap{max-width:1360px;margin:0 auto;padding:0 40px;position:relative}
+.d{font-family:'Oranienbaum',serif;font-weight:400;line-height:.95;margin:0}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:92px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#12392B}
+.logo svg{width:46px;height:46px}
+.logo b{font-family:'Oranienbaum',serif;font-weight:400;font-size:34px;line-height:1}
+.logo small{display:block;font-size:13px;color:#4F6157;margin-top:2px}
+.nav{display:flex;gap:28px;flex-wrap:wrap}
+.nav a{text-decoration:none;font-size:16px;font-weight:500;padding:10px 0}
+.nav a:hover{color:#C4502E}
+.nav a.on{box-shadow:inset 0 -2px 0 #C4502E}
+.tk{-webkit-mask:radial-gradient(circle 11px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 11px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat}
+.tkv{-webkit-mask:radial-gradient(circle 12px at 50% 0,#0000 97%,#000) top/100% 51% no-repeat,radial-gradient(circle 12px at 50% 100%,#0000 97%,#000) bottom/100% 51% no-repeat;mask:radial-gradient(circle 12px at 50% 0,#0000 97%,#000) top/100% 51% no-repeat,radial-gradient(circle 12px at 50% 100%,#0000 97%,#000) bottom/100% 51% no-repeat}
+.gr{position:relative;overflow:hidden;background:#12392B}
+.gr img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.06) brightness(.98) sepia(.14)}
+.gr::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(242,179,61,.12) 0%,rgba(18,57,43,.22) 100%);mix-blend-mode:multiply}
+.lbl2{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:600;color:#C4502E}
+.lbl2::before{content:'';width:44px;height:2px;background:currentColor;flex:none}
+.bk{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:999px;background:#F2B33D;color:#0E1F18;font-weight:600;font-size:16px;white-space:nowrap;transition:transform .2s}
+.bk:hover{transform:translateY(-2px)}
+.bk:focus-visible{outline:3px solid #12392B;outline-offset:2px}
+.bk.ghost{background:transparent;box-shadow:inset 0 0 0 2px currentColor}
+
+.top{padding:40px 0 60px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:56px;align-items:end}
+.top h1{font-size:clamp(90px,10vw,160px);color:#12392B}
+.top .gr{height:300px;border-radius:150px 6px 6px 150px}
+.body{display:grid;grid-template-columns:260px minmax(0,1fr);gap:56px;padding-bottom:100px;align-items:start}
+.side{position:sticky;top:20px;display:flex;flex-direction:column;gap:4px}
+.side button{all:unset;cursor:pointer;padding:12px 18px;border-radius:6px;font-weight:600;font-size:16px;display:flex;justify-content:space-between}
+.side button span{color:#4F6157;font-weight:400}
+.side button.on{background:#12392B;color:#F7F8F3}
+.side button.on span{color:#F2B33D}
+.side .help{margin-top:24px;background:#E3EBE1;border-radius:6px;padding:20px;font-size:15px}
+.side .help b{display:block;font-family:'Oranienbaum',serif;font-weight:400;font-size:26px;margin-bottom:6px}
+.grp h2{font-size:52px;color:#12392B;margin:0 0 18px}
+.q{border-top:1px solid #DCE6DF}
+.q:last-child{border-bottom:1px solid #DCE6DF}
+.q button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;justify-content:space-between;gap:24px;align-items:center;padding:22px 0;font-size:20px;font-weight:600}
+.q button:hover{color:#C4502E}
+.q button i{flex:none;width:36px;height:36px;border-radius:50%;background:#E3EBE1;display:grid;place-items:center;font-style:normal;font-size:22px;transition:transform .2s}
+.q.open button i{transform:rotate(45deg);background:#F2B33D}
+.q .a{display:none;padding:0 60px 24px 0;color:#3D4D44}
+.q.open .a{display:block}
+.rules{background:#12392B;color:#F7F8F3;padding:100px 0}
+.rules h2{font-size:clamp(56px,6vw,92px);margin:14px 0 40px}
+.rules .lbl2{color:#F2B33D}
+.rg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.rl{color:#C9D6CE;margin:-24px 0 32px}.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:40px}.four div{background:#F2B33D;color:#0E1F18;border-radius:6px;padding:22px;font-size:15px}.four b{display:block;font-family:'Oranienbaum',serif;font-weight:400;font-size:28px;line-height:1.05;margin-bottom:10px}.tbl{background:#F7F8F3;color:#0E1F18;border-radius:6px;overflow:hidden;margin-bottom:40px}.tr{display:grid;grid-template-columns:200px 1fr 1fr;gap:20px;padding:14px 22px;border-top:1px solid #DCE6DF;font-size:16px}.tr span:first-child{font-weight:600}.tr.th{background:#E3EBE1;font-weight:600;border-top:0}.tr span:nth-child(3){color:#A3402A}
+.rb{background:#1C4A38;border-radius:6px;padding:30px}
+.rb h3{font-family:'Oranienbaum',serif;font-weight:400;font-size:34px;margin:0 0 14px;color:#F2B33D}
+.rb ul{margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:8px;color:#DCE6DF;font-size:16px}
+
+/* ——— shared kit ——— */
+.k-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.k-lnk{all:unset;box-sizing:border-box;cursor:pointer;font-weight:600;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;display:inline-flex;align-items:center;min-height:44px}
+.k-lnk:hover{color:#C4502E}
+.k-lnk:focus-visible,.k-cart:focus-visible,.k-buy:focus-visible,.k-x:focus-visible,.k-subbtn:focus-visible{outline:3px solid #F2B33D;outline-offset:3px}
+.k-hr{display:flex;align-items:center;gap:18px}
+.k-cart{position:relative;display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:#12392B;color:#F7F8F3;text-decoration:none;box-shadow:0 10px 18px -10px rgba(11,42,31,.7);transition:transform .2s}
+.k-cart:hover{transform:translateY(-2px);color:#F7F8F3}
+.k-cart svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.k-cart b{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:#F2B33D;color:#0E1F18;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.k-buy{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:stretch;min-height:58px;color:#0E1F18;background:#F2B33D;font-family:'Jost',sans-serif;font-weight:600;font-size:17px;border-radius:8px;transition:transform .2s;
+  -webkit-mask:radial-gradient(circle 11px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat;
+  mask:radial-gradient(circle 11px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 11px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat}
+.k-buy span{display:flex;align-items:center;padding:0 22px 0 28px}
+.k-buy i{font-style:normal;display:flex;align-items:center;padding:0 26px 0 18px;border-left:2px dashed rgba(14,31,24,.35)}
+.k-buy:hover{transform:translateY(-2px);color:#0E1F18}
+.k-shadow{display:inline-block;filter:drop-shadow(0 12px 14px rgba(150,100,20,.35))}
+.k-foot{background:#0B2A1F;color:#B7CBBE;padding:80px 0 36px;font-size:16px}
+.k-foot .logo{color:#F7F8F3}.k-foot .logo small{color:#8FA898}
+.k-foot-top{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:40px}
+.k-faddr{margin:22px 0 0;line-height:1.6}
+.k-faddr .k-lnk{min-height:0;color:#F7F8F3}
+.k-foot h4{font-size:15px;font-weight:600;color:#F7F8F3;margin:0 0 14px}
+.k-foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.k-foot ul a,.k-foot-bot a{text-decoration:none}.k-foot ul a:hover,.k-foot-bot a:hover{color:#F2B33D}
+.k-sub{display:flex;gap:8px;margin-top:24px;max-width:460px}
+.k-sub input{flex:1;min-width:0;height:50px;padding:0 16px;border-radius:6px;border:1.5px solid rgba(247,248,243,.3);background:rgba(247,248,243,.06);color:#F7F8F3;font:inherit}
+.k-sub input::placeholder{color:#8FA898}
+.k-subbtn{all:unset;box-sizing:border-box;cursor:pointer;height:50px;padding:0 20px;border-radius:6px;background:#F2B33D;color:#0E1F18;font-weight:600}
+.k-foot-bot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:56px;padding-top:22px;border-top:1px solid rgba(247,248,243,.14);font-size:13px;color:#8FA898}
+.k-credits{margin:14px 0 0;font-size:12px;line-height:1.6;color:#7E9587}
+.k-veil{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(6,20,14,.62);backdrop-filter:blur(4px)}
+.k-modal{position:relative;width:min(580px,100%);background:#12392B;color:#F7F8F3;border-radius:8px;border:6px solid #0F3123;padding:40px 38px 32px;box-shadow:0 2px 0 #0B2A1F,0 50px 90px -24px rgba(0,0,0,.75)}
+.k-bolt{position:absolute;top:10px;width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#EDE8DA,#8E8A7E)}
+.k-mtag{display:inline-block;padding:4px 12px;border-radius:999px;background:#F2B33D;color:#0E1F18;font-size:13px;font-weight:600}
+.k-mh{font-family:'Oranienbaum',serif;font-weight:400;font-size:44px;line-height:1;margin:16px 0 14px}
+.k-mp{margin:0;color:#CFDDD3;font-size:17px;line-height:1.55}
+.k-mrow{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:26px}
+.k-back{color:#F7F8F3}
+.k-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:55;display:flex;align-items:center;gap:16px;padding:12px 12px 12px 20px;border-radius:8px;background:#12392B;color:#F7F8F3;box-shadow:0 24px 40px -14px rgba(0,0,0,.6);font-size:15px;max-width:calc(100% - 32px)}
+.k-toastgo{padding:10px 16px;border-radius:6px;background:#F2B33D;color:#0E1F18;font-weight:600;text-decoration:none;white-space:nowrap}
+.k-x{all:unset;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#B7CBBE}
+.k-field{display:flex;flex-direction:column;gap:6px;font-size:15px;font-weight:600}
+.k-field input,.k-field select,.k-field textarea{font:inherit;font-weight:400;font-size:17px;padding:13px 15px;border:1.5px solid #CBD5CD;border-radius:6px;background:#fff;color:#0E1F18}
+.k-field textarea{min-height:120px;resize:vertical}
+.k-field input:focus,.k-field select:focus,.k-field textarea:focus{outline:3px solid #F2B33D;outline-offset:1px;border-color:#12392B}
+.k-check{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4}
+.k-check input{width:20px;height:20px;margin:2px 0 0;accent-color:#12392B}
+@media (max-width:1000px){
+  .k-foot-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .k-foot-top>div:first-child{grid-column:1 / -1}
+  .k-hr .k-lnk{display:none}
+  .k-modal{padding:32px 20px 24px}
+  .k-mh{font-size:34px}
+  .k-toast{left:16px;right:16px;transform:none;flex-wrap:wrap}
+}
+
+@media (max-width:1000px){
+  .wrap{padding:0 16px}
+  .top,.body,.rg,.four{grid-template-columns:minmax(0,1fr)}.tr{grid-template-columns:1fr;gap:4px}.tr.th{display:none}
+  .top .gr{height:220px}
+  .side{position:static;flex-direction:row;overflow-x:auto;scrollbar-width:none}
+  .side button{white-space:nowrap}.side .help{display:none}
+  .q .a{padding-right:0}
+  .rules{padding:64px 0}
+  .nav{order:3;width:100%;flex-wrap:nowrap;overflow-x:auto;gap:20px;scrollbar-width:none}.nav a{white-space:nowrap}
+}
+</style>
+</helmet>
+
+<div class="k">
+  <header class="hdr"><div class="wrap">
+    <a class="logo" href="index.html" aria-label="Ковчег, на главную">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M11.5 19 L20 11.5 L28.5 19" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"></path><rect x="14.5" y="19" width="11" height="7" fill="none" stroke="currentColor" stroke-width="2.4"></rect><path d="M4 26 H36 L31 33 H9 Z" fill="currentColor"></path><path d="M5 37.5 q3.75 -2.5 7.5 0 t7.5 0 t7.5 0 t7.5 0" fill="none" stroke="#F2B33D" stroke-width="2" stroke-linecap="round"></path></svg>
+      <span><b>Ковчег</b><small>зоопарк, Минск</small></span>
+    </a>
+    <nav class="nav" aria-label="Главное меню">
+      <a href="animals.html">Животные</a>
+      <a href="index.html#map">Карта</a>
+      <a href="tickets.html">Билеты</a>
+      <a href="experiences.html">Впечатления</a>
+      <a href="visit.html">Как добраться</a>
+      <a href="about.html">О зоопарке</a>
+    </nav>
+    <div class="k-hr">
+      <button class="k-lnk" type="button" onClick="{{callDemo}}">+375 17 000-00-00</button>
+      <a class="k-cart" href="cart.html" aria-label="Корзина"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2z"></path><path d="M9 8V6.5a3 3 0 0 1 6 0V8"></path></svg><sc-if value="{{hasCart}}"><b>{{cartCount}}</b></sc-if></a>
+    </div>
+  </div></header>
+
+  <div class="wrap">
+    <div class="top">
+      <div><div class="lbl2">Вопросы и правила</div><h1 class="d">Спрашивайте — мы ответим</h1><p style="color:#3D4D44;margin:18px 0 0;max-width:560px">Самые частые вопросы гостей по темам. Если нужного вопроса нет, напишите на <button class="k-lnk" type="button" onClick="{{mailDemo}}">info@kovcheg-zoo.by</button> или позвоните <button class="k-lnk" type="button" onClick="{{callDemo}}">+375 17 000-00-00</button>.</p></div>
+      <div class="gr"><img src="img/meerkat.jpg" alt="Сурикат стоит на задних лапах"></div>
+    </div>
+
+    <div class="body">
+      <nav class="side" aria-label="Темы">
+        <sc-for list="{{groups}}" as="g"><button class="{{g.cls}}" onClick="{{g.pick}}">{{g.name}}</button></sc-for>
+        <div class="help"><b>Не нашли ответ?</b>Напишите нам — ответим в течение дня.<br><a href="contacts.html" style="font-weight:600;color:#C4502E">Контакты →</a></div>
+      </nav>
+      <div class="grp">
+        <h2 class="d">{{cur}}</h2>
+        <sc-for list="{{qs}}" as="q">
+          <div class="{{q.cls}}"><button onClick="{{q.toggle}}">{{q.q}}<i aria-hidden="true">+</i></button><div class="a">{{q.a}}</div></div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <section class="rules" id="rules">
+    <div class="wrap">
+      <div class="lbl2">Правила посещения</div>
+      <h2 class="d">Вы в гостях у животных</h2>
+      <p class="rl">Четыре правила объясняют почти всё. Всё остальное — детали.</p>
+      <div class="four">
+        <div><b>Не кормить животных</b>У каждого свой рацион, и чужая еда может обернуться болезнью. Кормить можно только жирафов и животных на Ферме, и только нашим кормом.</div>
+        <div><b>Не перелезать через ограждения</b>И не просовывать руки в вольер. Даже добрые животные сильные и непредсказуемые.</div>
+        <div><b>Не дразнить и не пугать</b>Не стучать по стеклу, не бросать предметы, не кричать у вольеров.</div>
+        <div><b>Не оставлять детей одних</b>Дети до 14 лет проходят только с сопровождающим.</div>
+      </div>
+      <div class="tbl">
+        <div class="tr th"><span>Тема</span><span>Можно</span><span>Нельзя</span></div>
+        <div class="tr"><span>Фото и видео</span><span>на телефон и камеру без вспышки</span><span>вспышка, штативы, дроны, коммерческая съёмка без разрешения</span></div>
+        <div class="tr"><span>Еда</span><span>своя еда в пикник-зоне и на скамейках</span><span>еда у вольеров, мангалы, алкоголь</span></div>
+        <div class="tr"><span>Домашние животные</span><span>собаки-поводыри; маленькие собаки в переноске на улице</span><span>вход с животными в павильоны и на Ферму</span></div>
+        <div class="tr"><span>Транспорт</span><span>коляски, самокаты для детей до 8 лет</span><span>велосипеды, скейты, взрослые самокаты</span></div>
+        <div class="tr"><span>Курение</span><span>в курилках у главного входа</span><span>курить и вейпить на территории</span></div>
+        <div class="tr"><span>Музыка</span><span>тихая музыка в наушниках</span><span>колонки и громкие разговоры у вольеров</span></div>
+      </div>
+      <div class="rg">
+        <div class="rb"><h3>Безопасность</h3><ul><li>на территории видеонаблюдение и 10 сотрудников охраны</li><li>если животное оказалось вне вольера, следуйте сигналу «Внимание» и спокойно уйдите в ближайшее здание</li><li>дежурная служба: +375 17 000-00-02</li></ul></div>
+        <div class="rb"><h3>Если потерялся ребёнок</h3><ul><li>не паникуйте и подойдите к любому сотруднику в жёлтой форме</li><li>входы перекрываются в течение минуты, поиск обычно занимает меньше 10 минут</li><li>браслет с телефоном родителя выдают на кассе бесплатно</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="k-foot">
+    <div class="wrap">
+      <div class="k-foot-top">
+        <div>
+          <a class="logo k-flogo" href="index.html" aria-label="Ковчег, на главную"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M11.5 19 L20 11.5 L28.5 19" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"></path><rect x="14.5" y="19" width="11" height="7" fill="none" stroke="currentColor" stroke-width="2.4"></rect><path d="M4 26 H36 L31 33 H9 Z" fill="currentColor"></path><path d="M5 37.5 q3.75 -2.5 7.5 0 t7.5 0 t7.5 0 t7.5 0" fill="none" stroke="#F2B33D" stroke-width="2" stroke-linecap="round"></path></svg><span><b>Ковчег</b><small>зоопарк, Минск, с 2009 года</small></span></a>
+          <p class="k-faddr">Минск, ул. Зелёная Роща, 1<br><button class="k-lnk" type="button" onClick="{{callDemo}}">+375 17 000-00-00</button> · <button class="k-lnk" type="button" onClick="{{mailDemo}}">info@kovcheg-zoo.by</button></p>
+          <form class="k-sub">
+            <label class="k-vh" for="k-sub-email">Email для новостей</label>
+            <input id="k-sub-email" type="email" placeholder="Email · новости раз в месяц">
+            <button class="k-subbtn" type="button" onClick="{{formDemo}}">Подписаться</button>
+          </form>
+        </div>
+        <div><h4>Посетителям</h4><ul><li><a href="tickets.html">Билеты</a></li><li><a href="visit.html">Как добраться</a></li><li><a href="faq.html">Вопросы и правила</a></li><li><a href="contacts.html">Контакты</a></li><li><a href="cart.html">Корзина</a></li></ul></div>
+        <div><h4>Зоопарк</h4><ul><li><a href="about.html">О зоопарке</a></li><li><a href="about.html#science">Природа и наука</a></li><li><a href="experiences.html">Впечатления</a></li><li><a href="news.html">Новости</a></li><li><a href="support.html">Поддержать</a></li></ul></div>
+        <div><h4>Часы</h4><ul><li>Лето: 9:00–20:00</li><li>Зима: 10:00–17:00</li><li>Без выходных</li></ul></div>
+      </div>
+      <div class="k-foot-bot">
+        <span>© 2009–2026 Зоопарк «Ковчег» · демо-сайт для портфолио, зоопарк вымышленный</span>
+        <span><a href="legal.html#privacy">Политика конфиденциальности</a> · <a href="legal.html#terms">Публичная оферта</a></span>
+      </div>
+      <p class="k-credits">Фото: Wikimedia Commons, иллюстративные (CC BY, CC BY-SA, CC0, PD); авторы указаны на страницах. Дизайн и вёрстка — Анатолий, Telegram @isthisthedaggr.</p>
+    </div>
+  </footer>
+  <sc-if value="{{toastOn}}">
+    <div class="k-toast" role="status"><span>Добавлено в корзину: <b>{{toast}}</b></span><a class="k-toastgo" href="cart.html">В корзину →</a><button class="k-x" type="button" aria-label="Закрыть" onClick="{{closeToast}}">×</button></div>
+  </sc-if>
+  <sc-if value="{{demo}}">
+    <div class="k-veil" role="dialog" aria-modal="true" aria-labelledby="k-demo-title">
+      <div class="k-modal">
+        <i class="k-bolt" style="left:10px"></i><i class="k-bolt" style="right:10px"></i>
+        <span class="k-mtag">Пробный сайт</span>
+        <h2 id="k-demo-title" class="k-mh">{{demoTitle}}</h2>
+        <p class="k-mp">{{demoText}}</p>
+        <div class="k-mrow">
+          <span class="k-shadow"><a class="k-buy" href="https://t.me/isthisthedaggr" target="_blank" rel="noopener"><span>Написать в Telegram</span><i>@isthisthedaggr</i></a></span>
+          <sc-if value="{{isAnimal}}"><a class="k-lnk k-back" href="altai.html">Страница Алтая</a></sc-if>
+          <button class="k-lnk k-back" type="button" onClick="{{closeDemo}}">Вернуться на сайт</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</template>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3400}}'>
+class Component extends DCLogic {
+  kitInit() {
+    let n = 0;
+    try { const c = JSON.parse(localStorage.getItem('kovcheg-cart') || '[]'); n = c.reduce((s, x) => s + (x.qty || 0), 0); } catch (e) {}
+    this.setState({ cartCount: n });
+    setTimeout(() => { try { const h = location.hash.slice(1); const el = h && document.getElementById(h); if (el) el.scrollIntoView(); } catch (e) {} }, 60);
+  }
+  addToCart(item) {
+    let c = null;
+    try { c = JSON.parse(localStorage.getItem('kovcheg-cart') || '[]'); } catch (e) { c = null; }
+    if (c) {
+      const f = c.find(x => x.id === item.id);
+      if (f) f.qty += item.qty || 1; else c.push({ ...item, qty: item.qty || 1 });
+      try { localStorage.setItem('kovcheg-cart', JSON.stringify(c)); } catch (e) {}
+      this.setState({ cartCount: c.reduce((s, x) => s + x.qty, 0), toast: item.label });
+    } else {
+      this.setState({ cartCount: ((this.state && this.state.cartCount) || 0) + (item.qty || 1), toast: item.label });
+    }
+  }
+  kit() {
+    const s = this.state || {};
+    return {
+      demo: !!s.demo, isAnimal: s.demoKind === 'animal',
+      demoTitle: s.demoKind === 'animal' ? 'Страница есть только у Алтая' : (s.demoWhat || 'Эта функция') + ' — только в настоящем сайте',
+      demoText: s.demoKind === 'animal' ? 'В демо-версии сделана одна страница жителя — амурский тигр Алтай. Страницы остальных животных появятся в настоящем сайте. Хотите такой сайт — напишите мне в Telegram.' : '«Ковчег» — демо-проект для портфолио, зоопарк вымышленный, поэтому оплата, звонки и отправка форм здесь не работают. Хотите такой же сайт для своего бизнеса — напишите мне в Telegram, обсудим.',
+      cartCount: s.cartCount || 0, hasCart: (s.cartCount || 0) > 0,
+      toastOn: !!s.toast, toast: s.toast || '',
+      closeToast: () => this.setState({ toast: '' }),
+      callDemo: () => this.setState({ demo: true, demoKind: '', demoWhat: 'Звонок' }),
+      mailDemo: () => this.setState({ demo: true, demoKind: '', demoWhat: 'Письмо' }),
+      payDemo: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ demo: true, demoKind: '', demoWhat: 'Оплата' }); },
+      formDemo: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ demo: true, demoKind: '', demoWhat: 'Отправка формы' }); },
+      animalDemo: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ demo: true, demoKind: 'animal' }); },
+      closeDemo: () => this.setState({ demo: false })
+    };
+  }
+  componentDidMount() { this.kitInit(); }
+  constructor(props) { super(props); this.state = { g: 0, open: { '0-0': true } }; }
+  renderVals() {
+    const s = this.state || {};
+    const open = s.open || {};
+    const G = [
+      ['Билеты', [
+        ['Сколько стоит билет?', 'Взрослый билет стоит 22 Br в будни и 28 Br в выходные, детский (6–17 лет) — 11 и 14 Br. Дети до 6 лет проходят бесплатно. Полная таблица — на странице «Билеты».'],
+        ['Нужно ли платить отдельно за павильоны и шоу?', 'Нет. Тропики, Арктика, кормления и лекции входят в билет. Платные только корм для жирафов и Фермы, пони, электромобиль и аудиогид.'],
+        ['Можно ли вернуть билет?', 'Да, без удержаний — если написать не позже чем за сутки до дня посещения. Онлайн-билет действует 30 дней с момента покупки, поэтому дату можно сменить.'],
+        ['Есть ли скидки для студентов и пенсионеров?', 'Да, билет стоит 14 Br в будни и 17 Br в выходные. Нужно показать студенческий или пенсионное удостоверение на входе.'],
+        ['Выгоден ли абонемент?', 'Годовой абонемент взрослого за 120 Br окупается примерно за 5 визитов. Если вы приходите чаще раза в сезон, он выгоднее.']
+      ]],
+      ['Планирование визита', [
+        ['Сколько времени нужно?', 'От одного часа на экспресс-маршрут до 5–6 часов на полный круг. Большинство гостей остаются на 2,5–3 часа.'],
+        ['Когда лучше приходить?', 'В будни утром: мало людей, животные активны. В выходные самые спокойные часы — с 9:00 до 11:00 летом и после 15:00 зимой.'],
+        ['Работает ли зоопарк зимой и в дождь?', 'Да, без выходных. Зимой открыто с 10:00 до 17:00. В дождь работают все павильоны, а в штормовое предупреждение открыты только павильоны.'],
+        ['Можно ли с едой и напитками?', 'Да, своё можно есть в пикник-зоне «Поляна» и на скамейках. У вольеров есть нельзя, мангалы и алкоголь запрещены.'],
+        ['Где оставить машину?', 'На парковке на 600 мест перед входом. Два часа бесплатно, затем 2 Br в час, максимум 10 Br в сутки.'],
+        ['Можно ли привести собаку?', 'Да, на поводке или в переноске, но без входа в павильоны и на Ферму. Собаки сильно волнуют диких животных, поэтому держите их на коротком поводке.']
+      ]],
+      ['Животные', [
+        ['Почему не видно животное?', 'У животных есть укрытия, и они могут в них отдыхать. Вернитесь позже, приходите на кормление или спросите зоолога: он знает, когда житель обычно бодрствует.'],
+        ['Можно ли кормить животных?', 'Только жирафов (в 12:00 и 16:00, набор листьев 5 Br) и животных на Ферме (стаканчик корма 2 Br). Других кормить нельзя.'],
+        ['Какой вид у вас самый редкий?', 'Борнейский орангутан: в природе осталось меньше ста тысяч особей, и вид на грани исчезновения. Ваш билет помогает его спасать.'],
+        ['Как узнать про малышей?', 'Следите за новостями на сайте и в Telegram. Каждый август мы проводим голосование за имена новорождённых.']
+      ]],
+      ['Дети и семьи', [
+        ['Можно ли с коляской?', 'Да, все дорожки приспособлены. Взять коляску напрокат можно у входа за 6 Br в день. Инвалидные коляски — бесплатно.'],
+        ['Есть ли комната для кормления малыша?', 'Да, у главного входа и в Тропиках: пелёнки, подогрев бутылочек, кресла для кормления.'],
+        ['С какого возраста ребёнок может гулять без взрослых?', 'Только с 14 лет. До 14 лет дети проходят с сопровождающим взрослым.']
+      ]],
+      ['Прочее', [
+        ['Можно ли снимать фото и видео для соцсетей?', 'Да, на телефон или камеру без вспышки. Коммерческая съёмка и дроны — только по письменному разрешению (press@kovcheg-zoo.by).'],
+        ['Я нашёл раненое дикое животное. Куда обратиться?', 'Позвоните в центр помощи диким животным: +375 29 000-00-03. Не кормите его и не держите дома: оставьте в тёмном тихом месте и ждите сотрудников.']
+      ]]
+    ];
+    const g = s.g || 0;
+    return { ...this.kit(),
+      groups: G.map((x, i) => ({ name: x[0], cls: i === g ? 'on' : '', pick: () => this.setState({ g: i }) })),
+      cur: G[g][0],
+      qs: G[g][1].map((x, i) => { const k = g + '-' + i; return { q: x[0], a: x[1], cls: 'q' + (open[k] ? ' open' : ''), toggle: () => this.setState({ open: { ...open, [k]: !open[k] } }) }; })
+    };
+  }
+}
+</script>
+</body>
+</html>
