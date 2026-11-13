@@ -454,14 +454,15 @@ class Component extends DCLogic {
   componentDidMount() { this.kitInit(); }
   constructor(props) { super(props); this.state = { day: 1, q: { adult: 2, child: 1, student: 0, family: 0, small: 0 } }; }
   renderVals() {
-    const DAYS = [
-      { wd: 'пт', num: 13, mon: 'ноя', iso: '2026-11-13', we: false, today: true },
-      { wd: 'сб', num: 14, mon: 'ноя', iso: '2026-11-14', we: true },
-      { wd: 'вс', num: 15, mon: 'ноя', iso: '2026-11-15', we: true },
-      { wd: 'пн', num: 16, mon: 'ноя', iso: '2026-11-16', we: false },
-      { wd: 'вт', num: 17, mon: 'ноя', iso: '2026-11-17', we: false },
-      { wd: 'ср', num: 18, mon: 'ноя', iso: '2026-11-18', we: false }
-    ];
+    // six days starting today; Saturday and Sunday use weekend prices
+    const WD = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+    const MO = ['янв', 'фев', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+    const t0 = new Date(); t0.setHours(12, 0, 0, 0);
+    const DAYS = [0, 1, 2, 3, 4, 5].map(i => {
+      const d = new Date(t0.getTime() + i * 864e5);
+      const p = n => String(n).padStart(2, '0');
+      return { wd: WD[d.getDay()], num: d.getDate(), mon: MO[d.getMonth()], iso: d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()), we: d.getDay() === 0 || d.getDay() === 6, today: i === 0 };
+    });
     const di = this.state.day, D = DAYS[di], we = D.we, q = this.state.q;
     const TYPES = [
       { key: 'adult', label: 'Взрослый', note: 'от 18 лет', price: we ? 28 : 22 },

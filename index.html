@@ -330,14 +330,13 @@ a{color:inherit}
         <div class="post">
         <div class="today">
           <i class="bolt b1"></i><i class="bolt b2"></i>
-          <div class="when">Сегодня, среда, 11 ноября</div>
-          <div class="open">Открыто до 17:00</div>
-          <p>Касса до 16:00 · вход с 10:00</p>
+          <div class="when">{{todayWhen}}</div>
+          <div class="open">{{todayOpen}}</div>
+          <p>{{todayCash}}</p>
           <hr class="perf">
-          <div class="row"><b>14:00</b><p>Ближайшее кормление: пингвины, Арктика</p></div>
-          <div class="row"><b>15:00</b><p>Тренировка тигров, Азия</p></div>
+          <sc-for list="{{nextFeeds}}" as="nf"><div class="row"><b>{{nf.t}}</b><p>{{nf.e}}</p></div></sc-for>
           <hr class="perf">
-          <p style="margin-top:16px">В ноябре крупные животные уходят в зимние квартиры — их видно через стекло. Тропики и Арктика открыты в любую погоду.</p>
+          <p style="margin-top:16px">{{todaySeason}}</p>
         </div>
         <div class="pole" aria-hidden="true"></div>
         <div class="ground" aria-hidden="true"></div>
@@ -585,14 +584,42 @@ class Component extends DCLogic {
     const sel = this.state.z;
     const zones = Z.map((z, i) => ({ ...z, x: P[i][0], y: P[i][1], cls: i === sel ? 'on' : '', pressed: i === sel ? 'true' : 'false', pick: () => this.setState({ z: i }) }));
     const S = [['10:30', 'Завтрак медведя Бори', 'Пуща'], ['11:00', 'Завтрак коалы Лео', 'Австралия'], ['11:30', 'Кормление львов', 'Саванна'], ['12:00', 'Жирафы едят из рук', 'Саванна'], ['12:30', 'Купание слонихи Дары', 'Азия'], ['13:30', 'Смена караула у сурикат', 'Саванна'], ['14:00', 'Кормление пингвинов', 'Арктика'], ['15:00', 'Тренировка тигров', 'Азия'], ['15:30', 'Медведи и лёд', 'Арктика'], ['16:30', 'Кенгуру', 'Австралия']];
-    const slots = S.map(s => ({ t: s[0], e: s[1], w: s[2], cls: s[0] === '14:00' ? 'next' : (s[0] < '14:00' ? 'past' : '') }));
+
+    // today's sign: hours by season (from the content doc), next feedings by the clock
+    const now = new Date();
+    const WD = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+    const MO = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    const hoursOf = d => {
+      const m = d.getMonth(), day = d.getDate();
+      if (m === 11 && day === 31) return { open: 10, close: 15, cash: 14 };
+      if (m === 0 && day === 1) return { open: 11, close: 17, cash: 16 };
+      return m >= 4 && m <= 8 ? { open: 9, close: 20, cash: 19 } : { open: 10, close: 17, cash: 16 };
+    };
+    const H = hoursOf(now);
+    const mins = now.getHours() * 60 + now.getMinutes();
+    const isOpen = mins >= H.open * 60 && mins < H.close * 60;
+    const tomorrow = new Date(now.getTime() + 864e5);
+    const HT = hoursOf(tomorrow);
+    const SEASON = ['Рождественская неделя: ёлки с угощением для слонов и лёд с рыбой для медведей.', 'В феврале — День влюблённых в Тропиках. Павильоны открыты в любую погоду.', 'Весной первым просыпается бурый медведь. Следите за новостями.', 'В апреле — День Земли: убираем лес и сажаем деревья вместе с волонтёрами.', 'В мае открываем летний сезон и начинаем ночёвки в зоопарке.', '1 июня дети до 17 лет проходят бесплатно.', '29 июля — День тигра: рассказываем про Алтая и его семью.', 'Август — месяц малышей: голосуем за имена детёнышей.', 'В сентябре начинаются уроки зоошколы.', '4 октября — День животных: детям с плюшевой игрушкой для приюта вход бесплатный.', 'В ноябре крупные животные уходят в зимние квартиры — их видно через стекло. Тропики и Арктика открыты в любую погоду.', 'В декабре дарим животным ёлки и фруктовые пирамиды. 31 декабря работаем до 15:00.'];
+    const hhmm = s => { const [h, m] = s.split(':').map(Number); return h * 60 + m; };
+    const todayVals = {
+      todayWhen: 'Сегодня, ' + WD[now.getDay()] + ', ' + now.getDate() + ' ' + MO[now.getMonth()],
+      todayOpen: isOpen ? 'Открыто до ' + H.close + ':00' : (mins < H.open * 60 ? 'Откроемся в ' + H.open + ':00' : 'Сейчас закрыто'),
+      todayCash: isOpen || mins < H.open * 60 ? 'Касса до ' + H.cash + ':00 · вход с ' + H.open + ':00' : 'Завтра открыто с ' + HT.open + ':00 до ' + HT.close + ':00',
+      todaySeason: SEASON[now.getMonth()]
+    };
+    const after = isOpen ? S.filter(s => hhmm(s[0]) >= mins) : [];
+    const nextT = after.length ? after[0][0] : '';
+    const slots = S.map(s => ({ t: s[0], e: s[1], w: s[2], cls: s[0] === nextT ? 'next' : (isOpen && hhmm(s[0]) < mins ? 'past' : '') }));
+    const nf = (after.length ? after : S).slice(0, 2);
+    const nextFeeds = nf.map((s, i) => ({ t: s[0], e: (i === 0 ? (after.length ? 'Ближайшее: ' : (mins < H.open * 60 ? 'Первое сегодня: ' : 'Завтра первое: ')) : '') + s[1] + ', ' + s[2] }));
     const stars = [
       { zone: 'Азия', c: '#B5532F', name: 'Алтай', sp: 'амурский тигр', age: '7 лет', st: 'EN', fact: 'Приехал из Новосибирска. В 2025 году у него и тигрицы Амуры родились двойняшки.', img: 'img/tiger2.jpg', alt: 'Амурский тигр лежит на траве', href: 'altai.html', go: () => {} },
       { zone: 'Азия', c: '#B5532F', name: 'Ява', sp: 'орангутан', age: '19 лет', st: 'CR', fact: 'Знает больше 40 жестов и открывает замки.', img: 'img/orangutan.jpg', alt: 'Орангутан', href: 'animals.html', go: (e) => this.kit().animalDemo(e) },
       { zone: 'Арктика', c: '#3F7F9E', name: 'Нордик', sp: 'белый медведь', age: '10 лет', st: 'VU', fact: 'Проплывает без остановки 30 км.', img: 'img/polar.jpg', alt: 'Белый медведь', href: 'animals.html', go: (e) => this.kit().animalDemo(e) },
       { zone: 'Пуща', c: '#4E7A49', name: 'Кряж', sp: 'зубр', age: '9 лет', st: 'NT', fact: 'Родился у нас в 2017-м и стал вожаком стада.', img: 'img/bison.jpg', alt: 'Зубр', href: 'animals.html', go: (e) => this.kit().animalDemo(e) }
     ];
-    return { ...this.kit(),  zones, cur: zones[sel], slots, stars };
+    return { ...this.kit(), ...todayVals, nextFeeds, zones, cur: zones[sel], slots, stars };
   }
 }
 </script>
